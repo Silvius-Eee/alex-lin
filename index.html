@@ -656,7 +656,7 @@ html[data-lang="en"] .ht h4 { font-family: var(--f-lat); font-weight: 600; }
 .lt { position: relative; min-width: 900px; }
 .lt-grid { position: absolute; inset: 0; pointer-events: none; }
 .gl { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1px dashed rgba(255,255,255,.07); }
-.lt-now { position: absolute; top: 0; bottom: 26px; width: 1px; background: linear-gradient(180deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent); box-shadow: 0 0 12px var(--gold-glow); }
+.lt-now { position: absolute; top: 112px; bottom: 26px; width: 1px; background: linear-gradient(180deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent); box-shadow: 0 0 12px var(--gold-glow); }
 .lt-now span { position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); font: 500 11px var(--f-lat); letter-spacing: .1em; color: var(--gold); white-space: nowrap; }
 .lt-now::before { content: ""; position: absolute; top: 18%; left: 50%; width: 7px; height: 7px; border-radius: 50%; transform: translate(-50%, -50%); background: var(--gold-2); box-shadow: 0 0 0 4px rgba(232,180,108,.18), 0 0 16px var(--gold); }
 
@@ -809,12 +809,12 @@ html[data-lang="en"] .wf-node b { font-family: var(--f-lat); }
 
 .trail { transition: filter .6s ease, opacity .6s ease; }
 .trail.lit { filter: brightness(1.75) saturate(1.15) drop-shadow(0 0 6px rgba(255,236,200,.85)); transition-duration: .15s; }
-.lt-eras { height: 150px; }
+.lt-eras { height: 172px; }
 .era { padding-top: 12px; gap: 3px; }
 .era-word { font-size: 40px; }
 .era-yr { letter-spacing: .08em; }
 .era-zh { margin-top: 4px; font-size: 12.5px; line-height: 1.65; color: var(--ink-2); max-width: 30em; padding-right: 8px; }
-.nd .tip b { display: block; font-weight: 600; color: var(--gold-2); }
+.nd .tip b { display: block; font: 600 11.5px var(--f-lat); color: var(--gold-2); }
 .nd .tip em { display: block; margin-top: 2px; font-style: normal; color: var(--ink-2); }
 
 .nd .tip { white-space: normal; width: max-content; max-width: 230px; text-align: left; line-height: 1.55; }
@@ -822,6 +822,156 @@ html[data-lang="en"] .wf-node b { font-family: var(--f-lat); }
 .nd.tip-l:hover .tip, .nd.tip-l:focus .tip { transform: translate(0, 0); }
 .nd.tip-r .tip { left: auto; right: -8px; transform: translate(0, 4px); }
 .nd.tip-r:hover .tip, .nd.tip-r:focus .tip { transform: translate(0, 0); }
+
+/* Timeline v2: four lanes named in a left gutter, tools tagged on their segments, every point labelled */
+.lt { --gut: 148px; min-width: 950px; }
+.lt-grid { left: var(--gut); }
+.lt-eras, .lt-axis, .lane { margin-left: var(--gut); }
+.lt-now, .lt-scan { top: 172px; }
+.lane { height: 96px; }
+.lane-name { position: absolute; top: 27px; left: calc(-1 * var(--gut)); width: calc(var(--gut) - 18px); display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+html[data-lang="en"] .lane-name { font-family: var(--f-lat); font-size: 12.5px; white-space: nowrap; }
+.sw { flex: none; display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+.sw.ivory { background: rgba(243,239,231,.95); }
+.sw.rose { background: #e08aa0; }
+.sw.silver { background: rgba(200,206,220,.95); }
+.sw.gold { background: var(--gold); box-shadow: 0 0 8px var(--gold-glow); }
+.seg-tag { position: absolute; top: 5px; padding: 2px 8px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; background: rgba(255,255,255,.035); font: 500 11px/1.4 var(--f-lat); color: var(--ink-2); white-space: nowrap; }
+.seg-tag span[lang="zh"] { font-family: var(--f-cn); }
+.seg-tag.to-end { margin-right: 6px; }
+.lane-gold .seg-tag { border-color: rgba(232,180,108,.4); background: rgba(232,180,108,.07); }
+.era-start { margin-top: 6px; font-size: 11.5px; color: var(--gold-2); }
+.era-start::before { content: ""; display: inline-block; width: 5px; height: 5px; margin-right: 7px; border-radius: 50%; background: var(--gold-2); vertical-align: middle; }
+.lane-gold .seg-tag { color: var(--gold-2); }
+.lane .trail { top: 34px; }
+.lane .trail.gold { top: 33px; }
+.lane .nd { top: 36px; }
+.proj { position: absolute; top: 31px; height: 10px; border-radius: 6px; z-index: 2; cursor: pointer; outline: none; background: linear-gradient(90deg, var(--gold-2), #fff3dc 60%, var(--gold-2)); box-shadow: 0 0 0 3px rgba(232,180,108,.16), 0 0 18px var(--gold-glow); }
+.proj .tip { position: absolute; bottom: calc(100% + 10px); right: 0; transform: translateY(4px); width: max-content; max-width: 250px; padding: 7px 11px; border-radius: 9px; background: rgba(17,19,25,.96); border: 1px solid rgba(232,180,108,.35); box-shadow: 0 12px 28px -12px rgba(0,0,0,.8); font-size: 12px; line-height: 1.55; color: var(--ink); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 5; }
+.proj .tip b { display: block; font-weight: 600; color: var(--gold-2); }
+.proj .tip em { display: block; margin-top: 2px; font-style: normal; color: var(--ink-2); }
+.proj:hover .tip, .proj:focus .tip { opacity: 1; transform: none; }
+.lane .nd-lab { top: 47px; transform: none; margin-left: -5px; font-size: 12.5px; line-height: 1.35; color: var(--ink-2); pointer-events: none; }
+.lane .nd-lab.to-l { margin-left: 0; margin-right: -5px; text-align: right; }
+.lane .nd-lab.row2 { top: 66px; }
+.nd-lab b { font-weight: 500; color: var(--ink); }
+.nd-lab small { display: block; margin-top: 1px; font-size: 11.5px; color: var(--gold-2); }
+.lane-gold .nd-lab b { color: var(--gold-2); }
+.lt.play .nd-lab { animation: labIn .6s ease-out backwards; animation-delay: calc(var(--d) + .35s); }
+.lt.play .proj { transform-origin: left center; animation: draw 1s cubic-bezier(.2,.8,.2,1) backwards; animation-delay: var(--d); }
+.lt.settled .nd-lab, .lt.settled .proj { animation: none; }
+@keyframes labIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* Timeline v2, narrow screens: the three eras stacked, each listing what happened in it */
+.lt-v { display: none; }
+@media (max-width: 1099px) {
+  .lt-scroll, .lt-foot { display: none; }
+  .lt-v { display: block; }
+}
+.v-methods { display: grid; gap: 10px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.v-m { padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,.025); }
+.v-m.v2 { border-color: rgba(232,180,108,.35); background: rgba(232,180,108,.06); }
+.v-m .era-word { display: block; font-size: 28px; }
+.v-m.v2 .era-word { background: linear-gradient(90deg, var(--gold-2), var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.v-m .era-yr { display: block; margin-top: 2px; }
+.v-m p { margin: 6px 0 0; font-size: 13px; line-height: 1.65; color: var(--ink-2); }
+.v-m .era-start { display: block; }
+.v-lane { padding: 22px 0 6px; border-bottom: 1px solid var(--line); }
+.v-lane:last-child { border-bottom: 0; padding-bottom: 0; }
+.v-lane h4 { display: flex; align-items: center; gap: 9px; margin: 0; font-size: 16px; font-weight: 700; color: var(--ink); }
+html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
+.v-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 10px; font-size: 11px; color: var(--muted); }
+.v-tools .seg-tag { position: static; }
+.v-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.v-era { padding: 22px 0 8px; border-bottom: 1px solid var(--line); }
+.v-era:last-child { border-bottom: 0; padding-bottom: 0; }
+.v-head .era-word { display: block; font-size: 34px; }
+.v-era.v2 .era-word { background: linear-gradient(90deg, var(--gold-2), var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.v-head .era-yr { display: block; margin-top: 2px; }
+.v-head p { margin: 8px 0 0; max-width: 40em; font-size: 13.5px; line-height: 1.7; color: var(--ink-2); }
+.v-lane ol, .v-era ol { position: relative; list-style: none; margin: 14px 0 0; padding: 0; }
+.v-lane ol::before, .v-era ol::before { content: ""; position: absolute; left: 3.5px; top: 14px; bottom: 14px; width: 1px; background: var(--line-2); }
+.v-lane li, .v-era li { display: grid; grid-template-columns: 8px 104px minmax(0, 1fr); gap: 0 14px; padding-block: 9px; }
+.v-lane li .sw, .v-era li .sw { position: relative; margin-top: 6px; }
+.v-date { padding-top: 1px; font: 500 12px/1.6 var(--f-lat); color: var(--muted); }
+.v-lane li b, .v-era li b { display: block; font-size: 14px; font-weight: 600; color: var(--ink); }
+.v-lane li em, .v-era li em { display: block; font-style: normal; font-size: 12.5px; color: var(--gold-2); }
+.v-lane li .v-d, .v-era li .v-d { display: block; margin-top: 2px; font-size: 12.5px; line-height: 1.6; color: var(--ink-2); }
+.v-now { display: inline-flex; align-items: center; gap: 8px; margin: 8px 0 4px; font: 500 11px var(--f-lat); letter-spacing: .1em; color: var(--gold); }
+.v-now i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold-2); box-shadow: 0 0 0 4px rgba(232,180,108,.18), 0 0 12px var(--gold); }
+@media (max-width: 520px) {
+  .v-lane li { grid-template-columns: 8px minmax(0, 1fr); }
+  .v-lane li .v-date, .v-lane li > div { grid-column: 2; }
+  .v-lane li .sw { grid-row: 1; }
+}
+
+/* Timeline v3: four colours shared by lanes and eras (each era takes the colour of the lane its starting point sits on) */
+:root { --c-teal: #6fd6bd; --c-rose: #ec8fab; --c-violet: #b39dff; }
+.lt-eras { height: 112px; }
+.lt-scan { top: 112px; }
+.era { border-top-width: 2px; }
+.era.e0 { border-top-color: var(--c-teal); background: linear-gradient(180deg, rgba(111,214,189,.08), transparent 85%); }
+.era.e1 { border-top-color: var(--c-violet); background: linear-gradient(180deg, rgba(179,157,255,.08), transparent 85%); }
+.era.e0 .era-word { color: var(--c-teal); }
+.era.e1 .era-word { color: var(--c-violet); }
+.era-zh { margin-top: 6px; }
+.sw.teal { background: var(--c-teal); }
+.sw.rose { background: var(--c-rose); }
+.sw.violet { background: var(--c-violet); }
+.lane .trail { height: 4px; top: 34px; box-shadow: none; }
+.trail.teal { background: linear-gradient(90deg, rgba(111,214,189,.55), rgba(111,214,189,.9)); box-shadow: 0 0 10px rgba(111,214,189,.25) !important; }
+.trail.rose { background: linear-gradient(90deg, rgba(236,143,171,.6), var(--c-rose)); box-shadow: 0 0 10px rgba(236,143,171,.3) !important; }
+.trail.violet { background: linear-gradient(90deg, rgba(179,157,255,.55), var(--c-violet)); box-shadow: 0 0 10px rgba(179,157,255,.28) !important; }
+.trail.gold-soft { background: linear-gradient(90deg, rgba(232,180,108,.25), rgba(232,180,108,.55)); }
+.lane .trail.gold { height: 4px; top: 34px; box-shadow: 0 0 14px var(--gold-glow) !important; }
+.lane .trail.gold-hi { height: 4px; top: 34px; z-index: 1; background: linear-gradient(90deg, #fff3dc, var(--gold-2) 50%, #fff3dc); box-shadow: 0 0 16px rgba(255,236,200,.7) !important; }
+.lane-teal .seg-tag { border-color: rgba(111,214,189,.3); }
+.lane-rose .seg-tag { border-color: rgba(236,143,171,.3); }
+.lane-violet .seg-tag { border-color: rgba(179,157,255,.32); }
+.lane .nd.origin { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--oc), 0 0 16px var(--oc); }
+.nd.mark { width: 9px; height: 9px; }
+.guide { position: absolute; top: 112px; width: 0; border-left: 1px dashed var(--oc); opacity: .55; pointer-events: none; }
+.nd .tip .o { display: block; margin-top: 4px; font: 500 11px var(--f-lat); letter-spacing: .04em; color: var(--oc); }
+/* Today: a tick on the year axis only, so it never runs through the labels */
+.lt-now { top: auto !important; bottom: 0; height: 26px; width: 1px; background: var(--gold); box-shadow: 0 0 10px var(--gold-glow); }
+.lt-now::before { top: 0; }
+.lt-now span { left: auto; right: 9px; bottom: 6px; transform: none; }
+/* Narrow layout colours */
+.v-m.v0 { border-color: rgba(111,214,189,.3); background: rgba(111,214,189,.05); }
+.v-m.v1 { border-color: rgba(179,157,255,.32); background: rgba(179,157,255,.05); }
+.v-m.v0 .era-word { color: var(--c-teal); }
+.v-m.v1 .era-word { color: var(--c-violet); }
+.v-m.v0 .era-start { color: var(--c-teal); } .v-m.v0 .era-start::before { background: var(--c-teal); }
+.v-m.v1 .era-start { color: var(--c-violet); } .v-m.v1 .era-start::before { background: var(--c-violet); }
+
+/* Honors as a compact strip */
+#honors .head { margin-bottom: 0; }
+.hon-strip { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.hs-item { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 18px 20px; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--glass); }
+.hs-item b { font-size: 15.5px; font-weight: 600; line-height: 1.5; color: var(--ink); }
+.hs-item .aw-note { margin-top: 0; }
+.hs-certs { grid-column: 1 / -1; margin: 2px 0 0; text-align: center; font-size: 13px; color: var(--muted); }
+@media (max-width: 640px) { .hon-strip { grid-template-columns: minmax(0, 1fr); } }
+
+/* Phones: tighter section spacing; timeline details open on tap */
+@media (max-width: 560px) { section { padding-top: 72px; } }
+.v-lane li { cursor: pointer; }
+.v-lane li .v-d { display: none; }
+.v-lane li.open .v-d { display: block; }
+.v-lane li b::after { content: "+"; margin-left: 8px; font: 400 13px var(--f-lat); color: var(--muted); }
+.v-lane li.open b::after { content: "−"; }
+.v-lane li { padding-block: 7px; }
+.v-m { padding: 12px 14px; }
+.v-m .era-word { font-size: 24px; }
+.v-m p { margin-top: 4px; }
+.v-tap { margin: 14px 0 0; font-size: 12px; color: var(--muted); }
+@media (max-width: 520px) {
+  .v-lane li { grid-template-columns: 8px 74px minmax(0, 1fr); }
+  .v-lane li .v-date { grid-column: 2; }
+  .v-lane li > div { grid-column: 3; }
+  .v-lane li .sw { grid-row: auto; }
+  .v-date { font-size: 11.5px; }
+}
 
 /* Phone overrides that must come after the component rules */
 @media (max-width: 640px) {
@@ -842,9 +992,9 @@ html[data-lang="en"] .wf-node b { font-family: var(--f-lat); }
   <div class="wrap">
     <a class="logo" href="#top">Alex Lin<b>.</b></a>
     <div class="links">
-      <a href="#timeline"><span lang="zh">方法</span><span lang="en">Method</span></a>
       <a href="#work"><span lang="zh">作品</span><span lang="en">Work</span></a>
       <a href="#review"><span lang="zh">经历</span><span lang="en">Experience</span></a>
+      <a href="#timeline"><span lang="zh">方法</span><span lang="en">Method</span></a>
       <a href="#honors"><span lang="zh">荣誉</span><span lang="en">Honors</span></a>
       <a href="#contact"><span lang="zh">联系</span><span lang="en">Contact</span></a>
     </div>
@@ -901,34 +1051,6 @@ html[data-lang="en"] .wf-node b { font-family: var(--f-lat); }
 
   <div class="fieldband" aria-label="Fields"><div class="marquee"><div class="marquee-track" id="mq1"></div></div></div>
 
-
-  <section id="timeline">
-    <div class="head">
-      <span class="eyebrow"><span lang="zh">方法 · AI 年表与用法</span><span lang="en">Method · AI timeline &amp; practice</span></span>
-      <h2><span lang="zh">工具换了几轮，<br><span class="soft">用法也一直在变。</span></span><span lang="en">The tools changed.<br><span class="soft">So did the way I use them.</span></span></h2>
-      <p><span lang="zh">边缘是渐变的，因为每一次迁移都是慢慢发生的。</span><span lang="en">The edges fade on purpose. Every move happened gradually.</span></p>
-    </div>
-
-    <div class="tl-card lt-card">
-      <div class="lt-scroll">
-        <div class="lt" id="lt">
-          <div class="lt-grid" id="lt-grid" aria-hidden="true"></div>
-          <div class="lt-eras" id="lt-eras"></div>
-          <div class="lt-lanes" id="lt-lanes"></div>
-          <div class="lt-axis" id="lt-axis"></div>
-        </div>
-      </div>
-      <div class="lt-foot">
-        <span class="lt-hint"><span lang="zh">左右滑动查看</span><span lang="en">Swipe to explore</span></span>
-      </div>
-    </div>
-
-    <div class="howto">
-      <h3><span lang="zh">我是怎么用 AI 的</span><span lang="en">How I actually use AI</span></h3>
-      <p class="howto-sub"><span lang="zh">一条每天都在跑的流水线。把鼠标放在节点上，看每一步怎么做。</span><span lang="en">A loop that runs every day. Hover a step to see how it works.</span></p>
-      <div class="wf" id="wf"></div>
-    </div>
-  </section>
 
   <section id="work">
     <div class="head">
@@ -1063,36 +1185,52 @@ html[data-lang="en"] .wf-node b { font-family: var(--f-lat); }
     </ol>
   </section>
 
+  <section id="timeline">
+    <div class="head">
+      <span class="eyebrow"><span lang="zh">方法 · 这几年怎么变过来的</span><span lang="en">Method · How it changed</span></span>
+      <h2><span lang="zh">工具换了几轮，<br><span class="soft">用法也一直在变。</span></span><span lang="en">The tools changed.<br><span class="soft">So did the way I use them.</span></span></h2>
+      <p><span lang="zh">AI 用法的三次升级：从写好提示，到管好上下文，再到驾驭 Agent。四条线是我用 AI 做的四类事，越往右，越多是交给 Agent 做完。</span><span lang="en">Three shifts in how AI gets used: from writing prompts, to managing context, to running agents. Each line is one kind of work I do with AI. Further right, more of it is done by agents.</span></p>
+    </div>
+
+    <div class="tl-card lt-card">
+      <div class="lt-scroll">
+        <div class="lt" id="lt">
+          <div class="lt-grid" id="lt-grid" aria-hidden="true"></div>
+          <div class="lt-eras" id="lt-eras"></div>
+          <div class="lt-lanes" id="lt-lanes"></div>
+          <div class="lt-axis" id="lt-axis"></div>
+        </div>
+      </div>
+      <div class="lt-v" id="lt-v"></div>
+      <div class="lt-foot">
+        <span class="lt-hint"><span lang="zh">左右滑动查看</span><span lang="en">Swipe to explore</span></span>
+      </div>
+    </div>
+
+    <div class="howto">
+      <h3><span lang="zh">现在每天怎么用 AI</span><span lang="en">How I use AI today</span></h3>
+      <p class="howto-sub"><span lang="zh">年表是这几年的变化，这条流水线是现在每天在跑的样子。悬停或点一下节点，看每一步怎么做。</span><span lang="en">The timeline is how it changed; this is the loop that runs every day now. Hover or tap a step to see how it works.</span></p>
+      <div class="wf" id="wf"></div>
+    </div>
+  </section>
+
   <section id="honors">
     <div class="head">
       <span class="eyebrow"><span lang="zh">荣誉 · 奖项与证书</span><span lang="en">Honors · Awards &amp; certificates</span></span>
-      <h2><span lang="zh">几次被认真评测过的<br><span class="soft">结果。</span></span><span lang="en">A few times I was<br><span class="soft">properly evaluated.</span></span></h2>
     </div>
 
-    <div class="hon">
-      <div class="hon-awards">
-        <div class="hon-label"><span lang="zh">拿过的奖</span><span lang="en">Awards</span></div>
-        <ul class="aw">
-          <li><span class="lv nat"><span lang="zh">国家级</span><span lang="en">National</span></span><span class="aw-name"><span lang="zh">中金所杯全国大学生金融知识大赛 · 二等奖</span><span lang="en">CFFEX Cup National Financial Knowledge Contest · 2nd Prize</span><span class="aw-note"><span lang="zh">获奖名单刊登于 <em>《人民日报》</em> 2022 年 12 月</span><span lang="en">Prize list printed in <em>People's Daily</em>, December 2022</span></span></span><span class="yr">2022</span></li>
-          <li><span class="lv nat"><span lang="zh">国家级</span><span lang="en">National</span></span><span class="aw-name"><span lang="zh">中金所杯全国大学生金融知识大赛 · 三等奖</span><span lang="en">CFFEX Cup National Financial Knowledge Contest · 3rd Prize</span></span><span class="yr">2024</span></li>
-          <li><span class="lv prov"><span lang="zh">省级</span><span lang="en">Provincial</span></span><span class="aw-name"><span lang="zh">浙江省优秀毕业生</span><span lang="en">Zhejiang Outstanding Graduate</span></span><span class="yr">2024</span></li>
-          <li><span class="lv prov"><span lang="zh">省级</span><span lang="en">Provincial</span></span><span class="aw-name"><span lang="zh">浙江省政府奖学金</span><span lang="en">Zhejiang Provincial Government Scholarship</span></span><span class="yr">2022</span></li>
-          <li><span class="lv uni"><span lang="zh">校级</span><span lang="en">University</span></span><span class="aw-name"><span lang="zh">一等奖学金</span><span lang="en">First-Class Scholarship</span></span><span class="yr">2022 · 2025</span></li>
-        </ul>
+    <div class="hon-strip">
+      <div class="hs-item">
+        <span class="lv nat"><span lang="zh">国家级</span><span lang="en">National</span></span>
+        <b><span lang="zh">中金所杯全国大学生金融知识大赛 · 二等奖</span><span lang="en">CFFEX Cup National Financial Knowledge Contest · 2nd Prize</span></b>
+        <span class="aw-note"><span lang="zh">获奖名单刊登于 <em>《人民日报》</em> 2022 年 12 月</span><span lang="en">Prize list printed in <em>People's Daily</em>, December 2022</span></span>
       </div>
-
-      <div class="hon-side">
-        <div class="certs">
-          <div class="hon-label"><span lang="zh">证书</span><span lang="en">Certificates</span></div>
-          <div class="cert-list">
-            <span><span lang="zh">英语六级</span><span lang="en">CET-6</span></span>
-            <span><span lang="zh">证券从业资格</span><span lang="en">Securities</span></span>
-            <span><span lang="zh">基金从业资格</span><span lang="en">Fund</span></span>
-            <span><span lang="zh">期货从业资格</span><span lang="en">Futures</span></span>
-            <span><span lang="zh">银行从业资格</span><span lang="en">Banking</span></span>
-          </div>
-        </div>
+      <div class="hs-item">
+        <span class="lv prov"><span lang="zh">省级</span><span lang="en">Provincial</span></span>
+        <b><span lang="zh">浙江省优秀毕业生 · 浙江省政府奖学金</span><span lang="en">Zhejiang Outstanding Graduate · Zhejiang Provincial Government Scholarship</span></b>
+        <span class="aw-note">2024 · 2022</span>
       </div>
+      <p class="hs-certs"><span lang="zh">证书：英语六级 · 证券 / 基金 / 期货 / 银行从业资格</span><span lang="en">Certificates: CET-6 · Securities, Fund, Futures and Banking qualifications</span></p>
     </div>
   </section>
 
@@ -1140,7 +1278,7 @@ html[data-lang="en"] .wf-node b { font-family: var(--f-lat); }
   // Scrolling tags: each row is rendered twice so the loop is seamless
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var tagRows = [
-    ["mq1", [["金融科技", "Fintech"], ["AI 独立开发者", "AI Indie Developer"], ["健身工作室联合创始人", "Fitness Studio Co-founder"], ["中国象棋业余九段", "Xiangqi, Amateur 9-dan"], ["学院田径队队长", "College Track Team Captain"], ["校研究生会宣传部部长", "Head of Publicity, Graduate Student Union"], ["金融工程", "Financial Engineering"], ["杭州师范大学", "Hangzhou Normal University"]]]
+    ["mq1", [["金融科技", "Fintech"], ["AI 独立开发者", "AI Indie Developer"], ["健身工作室创业合伙人", "Fitness Studio Partner"], ["中国象棋业余九段", "Xiangqi, Amateur 9-dan"], ["学院田径队队长", "College Track Team Captain"], ["校研究生会宣传部部长", "Head of Publicity, Graduate Student Union"], ["金融工程", "Financial Engineering"], ["杭州师范大学", "Hangzhou Normal University"]]]
   ];
 
   // Rotating identity line with thin line icons, ending on the motto
@@ -1257,7 +1395,7 @@ html[data-lang="en"] .wf-node b { font-family: var(--f-lat); }
   if (reduce) { lis.forEach(function (li) { li.classList.remove("dim"); }); showAngle(); setSay(1); } else playRun();
 
   // Timeline: months from Jan 2023 (0) to end of 2026 (48), drawn as light tracks
-  var SPAN = 48;
+  var SPAN = 49;
   var nowM = (today.getFullYear() - 2023) * 12 + today.getMonth() + today.getDate() / 31;
   function pct(m) { return (m / SPAN * 100) + "%"; }
 
@@ -1271,76 +1409,124 @@ html[data-lang="en"] .wf-node b { font-family: var(--f-lat); }
   nowLine.innerHTML = '<span>' + t("今天", "Today") + '</span>';
   ltGrid.appendChild(nowLine);
 
-  // Eras are named after how I worked with AI; the years live on the axis below
-  [[0, 18, "prompt", "Prompt Engineering", t("先学会把问题问清楚。用 ChatGPT 啃专业课、备考研、写论文，也写起了公众号。", "Learning to ask well: ChatGPT for coursework, exam prep, a thesis and a column.")],
-   [18, 36, "context", "Context Engineering", t("让 AI 先了解我。用 Gemini 搭有记忆的个人助手，用 NotebookLM 喂资料，用扣子和多维表格让信息自动入库。", "Letting AI know me first: an assistant with memory on Gemini, sources in NotebookLM, auto-filed data with Coze and Bitable.")],
-   [36, SPAN, "harness", "Harness Engineering", t("给 Agent 配好工具、记忆和 Skill，让它自己把事做完。我负责定方向和验收。", "Giving agents tools, memory and Skills so they finish the job. I set direction and review.")]].forEach(function (e, i) {
+  // Eras are methods, not buckets. Each starts at the first thing done that way (ringed on the chart) and takes that lane's colour.
+  // e: [from, to, word, full name, one-line note, starting point, colour]
+  var eras = [
+    [0, 17, "prompt", "Prompt Engineering", t("把需求说清楚，让模型给出能直接用的结果", "Ask precisely, get output I can use"), t("起点 · 2023.1 用 ChatGPT 学专业课", "Began · 2023.1, ChatGPT for coursework"), "--c-teal"],
+    [17, 32, "context", "Context Engineering", t("给模型配好记忆和资料，让它先懂我", "Memory and sources come first"), t("起点 · 2024.6 用 Gemini 搭第一个有记忆的助手", "Began · 2024.6, a Gemini assistant"), "--c-violet"],
+    [32, SPAN, "harness", "Harness Engineering", t("Agent 把事做完，我定方向、做验收", "Agents do the work; I direct and review"), t("起点 · 2025.9 开始用 Claude Code", "Began · 2025.9, moving to Claude Code"), "--gold"]
+  ];
+  eras.forEach(function (e, i) {
     var el = document.createElement("div"); el.className = "era e" + i;
     el.style.left = pct(e[0]); el.style.width = pct(e[1] - e[0]);
-    el.innerHTML = '<span class="era-word">' + e[2] + '</span><span class="era-yr">' + e[3] + '</span><span class="era-zh">' + e[4] + '</span>';
+    el.innerHTML = '<span class="era-word">' + e[2] + '</span><span class="era-zh">' + e[4] + '</span>';
     ltEras.appendChild(el);
   });
 
-  // kind: "camp" = a core bootcamp, "done" = something shipped
-  // Each lane: visible tools after the name, a short description in the hover tip, glowing points for skills picked up
+  // One look per kind of information: outlined chip = tool, label = what I did, gold small text = a result with a number.
+  // Dates and details live in the hover tip only.
+  // seg: [from, to, trail class, tool chip, chip sits at the segment end]
+  // nodes: [month, date, label, detail, opts]; opts: side "l" = label left of the point, res = a result, hi = end month of a project (a brighter stretch of line), origin = era index it starts, mark = a point with no label
   var lanes = [
-    { n: "ChatGPT", tools: "", sub: t("论文 · 专业课 · 考研", "papers · coursework · exams"), seg: [[0, 19, "ivory fade-r"]],
-      nodes: [] },
-    { n: t("AI 绘图", "AI image"), tools: t("Midjourney · 即梦 · 可灵", "Midjourney · Jimeng · Kling"), sub: "", seg: [[18, 20, "rose"]],
-      nodes: [] },
-    { n: t("AI 编程", "AI coding"), tools: "Cursor", sub: "", seg: [[22, 24, "sky"]],
-      nodes: [] },
-    { n: t("Google 生态", "Google stack"), tools: "Gemini · AI Studio · NotebookLM", sub: t("早期个人助手 · 准备组会报告", "early assistant · group meeting prep"), seg: [[17, 36, "silver fade-lr"]], nodes: [] },
-    { n: t("扣子", "Coze"), tools: t("飞书多维表格", "Feishu Bitable"), sub: t("金融信息自动入库", "financial info intake"), seg: [[32, 35, "silver"]],
-      nodes: [] },
-    { n: "Claude Code · Codex", tools: "", sub: t("原型 · 个人助手 · 科普视频 · Skill", "prototypes · assistant · videos · Skills"), seg: [[32, 36, "dim"], [36, nowM, "gold"]],
-      nodes: [] },
-    { n: t("AI 实践", "AI practice"), tools: t("DeepSeek · MCP · 更多", "DeepSeek · MCP · more"), sub: t("写作、视频、数据、建站，都上手试过", "writing, video, data, sites: tried them all"), seg: [[0, nowM, "thread"]],
+    { n: t("学习与写作", "Study &amp; writing"), c: "teal",
+      seg: [[0, 17.8, "teal", "ChatGPT"], [18, 35.8, "teal", "Gemini · NotebookLM · Cursor"], [36, nowM, "teal", "Claude · Codex", 1]],
       nodes: [
-        [3, t("专业课学习", "Coursework"), t("用 ChatGPT 讲概念、做练习、整理笔记", "ChatGPT for concepts, exercises and notes")],
-        [8, t("考研复习", "Grad exam prep"), t("用 AI 梳理知识框架、答疑", "AI to map the syllabus and answer questions")],
-        [13, t("心理学公众号", "Psychology column"), t("用 AI 选题、写稿、配图，一个半月涨粉四位数", "AI for topics, drafts and images; four-figure followers in six weeks")],
-        [15.5, t("本科论文", "Undergrad thesis"), t("用 AI 查资料、理思路、改语言", "AI for sources, structure and wording")],
-        [20.5, t("AI 写作", "AI writing"), t("系统学习 AI 写作的方法", "Learning AI-assisted writing properly")],
-        [21.5, t("AI 知识管理", "AI knowledge management"), t("搭起以 Obsidian 为核心的知识库", "Building a knowledge base around Obsidian")],
-        [26.2, "DeepSeek", t("第一时间上手 DeepSeek", "Trying DeepSeek as soon as it landed")],
-        [27, t("AI 视频", "AI video"), t("学习用 AI 做短视频", "Learning to make short videos with AI")],
-        [29.2, t("AI 做个人 IP", "AI for personal branding"), t("用 AI 梳理个人定位和内容方向", "AI to shape positioning and content")],
-        [30, t("MCP 智能体", "MCP agents"), t("学着搭能调用外部工具的智能体", "Building agents that call outside tools")],
-        [31.2, t("AI 做 PPT", "AI slides"), t("用 AI 快速做演示文稿", "Fast slide decks with AI")],
-        [32, t("AI 数据分析", "AI data analysis"), t("用 AI 清洗数据、得出结论", "AI to clean data and draw conclusions")],
-        [35.5, t("AI 快速建站", "AI quick sites"), t("围绕热词用 AI 快速做站", "Quick sites around trending keywords")],
-        [39.5, t("AI 小程序", "AI mini programs"), t("用 AI 开发微信小程序", "Building WeChat mini programs with AI")],
-        [43.5, t("Agent 架构", "Agent architecture"), t("系统学习 Agent 的架构设计", "Studying how agents are designed")]
+        [0.5, "2023.1", t("专业课学习", "Coursework"), t("用 ChatGPT 讲概念、做练习、整理笔记", "ChatGPT for concepts, exercises and notes"), { origin: 0 }],
+        [8.5, "2023.9", t("考研复习", "Grad exam prep"), t("用 AI 梳理知识框架、答疑", "AI to map the syllabus and answer questions")],
+        [15.5, "2024.4", t("本科论文", "Undergrad thesis"), t("用 AI 查资料、理思路、改语言", "AI for sources, structure and wording")],
+        [22.5, "2024.7 – 2025", t("论文与 AI 课程", "Papers &amp; AI courses"), t("用 Gemini、NotebookLM 查资料、写论文、学 AI 课程；也用 Cursor 写过论文", "Gemini and NotebookLM for research, papers and AI courses; Cursor for a paper too")]
+      ] },
+    { n: t("内容创作", "Content"), c: "rose",
+      seg: [[14, 17, "rose", "ChatGPT · DALL·E", 1], [18, 24, "rose", t("Midjourney · 即梦 · 可灵", "Midjourney · Jimeng · Kling")], [45, nowM, "rose", "Claude Code · Codex", 1]],
+      nodes: [
+        [15.3, "2024.4", t("心理学公众号", "Psychology column"), t("ChatGPT 写稿、DALL·E 配图", "Written with ChatGPT, illustrated with DALL·E"), { side: "l", res: t("一个半月涨粉四位数", "Four-figure followers in six weeks") }],
+        [18.5, "2024.7 – 2024.12", t("AI 绘图与视频", "AI images &amp; video"), t("用 Midjourney、即梦、可灵做图和短视频", "Images and short videos with Midjourney, Jimeng and Kling")],
+        [45.3, "2026.10", t("抖音科普视频", "Douyin explainers"), t("用 Claude Code 和 Codex 做心理学与经济学科普", "Psychology and economics explainers made with Claude Code and Codex"), { side: "l", res: t("一个月涨粉四位数", "Four-figure followers in a month") }]
+      ] },
+    { n: t("知识与信息管理", "Knowledge &amp; info"), c: "violet",
+      seg: [[17, 36, "violet fade-r", "Gemini · NotebookLM · Coze"], [36, nowM, "violet", "Claude Code"]],
+      nodes: [
+        [17.5, "2024.6", t("Gemini 个人助手", "Gemini assistant"), t("第一个有记忆的个人助手；用 NotebookLM 准备组会报告", "A first assistant with memory; NotebookLM for group meeting prep"), { side: "l", origin: 1 }],
+        [21.5, "2024.10", t("Obsidian 知识库", "Obsidian vault"), t("搭起以 Obsidian 为核心的知识库", "A knowledge base built around Obsidian")],
+        [32.5, "2025.9", t("Coze 自动入库", "Coze auto-intake"), t("Coze + 飞书多维表格，金融信息自动入库", "Coze and Feishu Bitable file financial news automatically"), { side: "l" }],
+        [36.5, t("2026 起", "2026 on"), t("有记忆的个人助手", "Assistant with memory"), t("用 Claude Code 搭的个人助手，接手了以前 Gemini 做的事", "A personal assistant on Claude Code, taking over what Gemini used to do")]
+      ] },
+    { n: t("产品与 Agent", "Products &amp; agents"), c: "gold",
+      seg: [[22, 32, "gold-soft", "Cursor · CodeBuddy · WorkBuddy"], [32, nowM, "gold", "Claude Code · Codex", 1]],
+      nodes: [
+        [22.5, "2024.11", t("简单网页", "Simple web pages"), t("第一次用 AI 编程：用 Cursor 做简单网页", "First AI coding: simple web pages with Cursor")],
+        [30.5, "2025.7", t("MCP 智能体", "MCP agents"), t("搭能调用外部工具的智能体", "Agents that call outside tools")],
+        [32, "2025.9", "", t("开始用 Claude Code，把整件事交给 Agent", "Started on Claude Code, handing whole tasks to agents"), { mark: 1, origin: 2 }],
+        [38, "2026.3 – 2026.8", t("跨境支付系统", "Payment system"), t("跨境支付渠道管理系统：设计 FI Agent，支持渠道能力、费率查询和报价利润计算，接入模型 API 做了原型验证", "Cross-border payment channel system: designed the FI agent for channel capability, fee lookup and quote margins; prototyped it on a model API"), { hi: 44 }],
+        [44.5, "2026.9", t("小程序上线", "Score app"), t("线下牌局计分小程序，已上线，微信可搜", "A score keeper for live card games, live and searchable in WeChat")]
       ] }
   ];
+  var ltItems = [];
   lanes.forEach(function (ln, li) {
-    var lane = document.createElement("div"); lane.className = "lane" + (li === lanes.length - 2 ? " lane-now" : "") + (li === lanes.length - 1 ? " lane-last" : "");
-    var start = ln.seg[0][0];
-    var head = document.createElement("div"); head.className = "lane-head";
-    if (start > 30) { head.classList.add("to-left"); head.style.right = (100 - start / SPAN * 100) + "%"; }
-    else head.style.left = pct(start);
-    head.tabIndex = 0;
-    head.innerHTML = '<b>' + ln.n + '</b>' + (ln.tools ? '<span class="lane-tools">' + ln.tools + '</span>' : '') + (ln.sub ? '<span class="tip">' + ln.sub + '</span>' : '');
-    lane.appendChild(head);
+    var lane = document.createElement("div"); lane.className = "lane lane-" + ln.c;
+    lane.innerHTML = '<div class="lane-name"><i class="sw ' + ln.c + '"></i><span>' + ln.n + '</span></div>';
     ln.seg.forEach(function (s) {
       var tr = document.createElement("span"); tr.className = "trail " + s[2];
       tr.style.left = pct(s[0]); tr.style.width = pct(s[1] - s[0]); tr.style.setProperty("--d", (s[0] / SPAN * 1.2).toFixed(2) + "s"); lane.appendChild(tr);
+      var tag = document.createElement("span"); tag.className = "seg-tag"; tag.innerHTML = s[3];
+      if (s[4]) { tag.classList.add("to-end"); tag.style.right = (100 - s[1] / SPAN * 100) + "%"; } else tag.style.left = pct(s[0]);
+      lane.appendChild(tag);
     });
     ln.nodes.forEach(function (nd) {
-      var n = document.createElement("span"); n.className = "nd"; n.style.left = pct(nd[0]); n.tabIndex = 0;
-      n.innerHTML = '<span class="tip"><b>' + nd[1] + '</b>' + (nd[2] ? '<em>' + nd[2] + '</em>' : '') + '</span><span class="flash">' + nd[1] + '</span>';
-      n.dataset.m = nd[0];
-      if (nd[0] < 6) n.classList.add("tip-l"); else if (nd[0] > 41) n.classList.add("tip-r");
-      lane.appendChild(n);
+      var o = nd[4] || {}, oc = o.origin != null ? "var(" + eras[o.origin][6] + ")" : "";
+      if (o.hi) {
+        var hi = document.createElement("span"); hi.className = "trail gold-hi";
+        hi.style.left = pct(nd[0]); hi.style.width = pct(o.hi - nd[0]); hi.style.setProperty("--d", (nd[0] / SPAN * 1.2).toFixed(2) + "s"); lane.appendChild(hi);
+      }
+      var pt = document.createElement("span"); pt.className = "nd" + (o.mark ? " mark" : "") + (oc ? " origin" : "");
+      if (oc) pt.style.setProperty("--oc", oc);
+      pt.innerHTML = '<span class="tip"><b>' + nd[1] + '</b><em>' + nd[3] + '</em>' + (oc ? '<span class="o">' + t(eras[o.origin][3] + " 的起点", "Where " + eras[o.origin][3] + " began") + '</span>' : '') + '</span>';
+      pt.style.left = pct(nd[0]); pt.tabIndex = 0; pt.dataset.m = nd[0];
+      if (nd[0] < 6) pt.classList.add("tip-l"); else if (nd[0] > 41) pt.classList.add("tip-r");
+      lane.appendChild(pt);
+      var els = [pt];
+      if (!o.mark) {
+        var lab = document.createElement("span"); lab.className = "nd-lab" + (o.side === "l" ? " to-l" : "");
+        if (o.side === "l") lab.style.right = (100 - nd[0] / SPAN * 100) + "%"; else lab.style.left = pct(nd[0]);
+        lab.innerHTML = '<b>' + nd[2] + '</b>' + (o.res ? '<small>' + o.res + '</small>' : '');
+        lane.appendChild(lab); els.push(lab);
+      }
+      // Dashed guide from the era header down to the point where that era began
+      if (oc) {
+        var g = document.createElement("span"); g.className = "guide"; g.style.setProperty("--oc", oc);
+        g.style.left = pct(nd[0]); g.style.height = (8 + li * 96 + 36 - 8) + "px"; ltGrid.appendChild(g);
+      }
+      ltItems.push({ m: nd[0], els: els });
     });
     ltLanes.appendChild(lane);
   });
-  // Play once when the timeline comes into view: trails draw, points drop in order of time, each skill name rises and fades
+
+  // Narrow screens: the three methods first, then each lane with its tools and what came of it
+  var ltV = document.getElementById("lt-v");
+  var vh = '<div class="v-methods">' + eras.map(function (e, i) {
+    return '<div class="v-m v' + i + '"><span class="era-word">' + e[2] + '</span><span class="era-yr">' + e[3] + '</span><p>' + e[4] + '</p><span class="era-start">' + e[5] + '</span></div>';
+  }).join("") + '</div>';
+  lanes.forEach(function (ln) {
+    vh += '<div class="v-lane lane-' + ln.c + '"><h4><i class="sw ' + ln.c + '"></i>' + ln.n + '</h4><div class="v-tools">' +
+      ln.seg.map(function (s) { return '<span class="seg-tag">' + s[3] + '</span>'; }).join("<span>→</span>") + '</div><ol>' +
+      ln.nodes.filter(function (nd) { return !(nd[4] && nd[4].mark); }).map(function (nd) {
+        var o = nd[4] || {};
+        return '<li><i class="sw ' + ln.c + '"></i><span class="v-date">' + nd[1] + '</span><div><b>' + nd[2] + '</b>' + (o.res ? '<em>' + o.res + '</em>' : '') + '<span class="v-d">' + nd[3] + '</span></div></li>';
+      }).join("") + '</ol></div>';
+  });
+  vh = vh.replace('<div class="v-lane', '<p class="v-tap">' + t("点开每一项看具体怎么做", "Tap an item for details") + '</p><div class="v-lane');
+  ltV.innerHTML = vh;
+  ltV.querySelectorAll(".v-lane li").forEach(function (li) {
+    li.tabIndex = 0; li.setAttribute("role", "button"); li.setAttribute("aria-expanded", "false");
+    function toggle() { var o = li.classList.toggle("open"); li.setAttribute("aria-expanded", String(o)); }
+    li.addEventListener("click", toggle);
+    li.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
+  });
+
+  // Play once when the timeline comes into view: trails draw, points drop in order of time and their labels fade in
   var ltEl = document.getElementById("lt");
-  Array.prototype.slice.call(ltEl.querySelectorAll(".nd")).sort(function (a, b) { return a.dataset.m - b.dataset.m; }).forEach(function (n, i) {
-    n.style.setProperty("--d", (1.3 + i * 0.42).toFixed(2) + "s");
-    n.classList.add("lv" + (i % 3));
+  ltItems.sort(function (a, b) { return a.m - b.m; }).forEach(function (it, i) {
+    it.els.forEach(function (el) { el.style.setProperty("--d", (1.3 + i * 0.36).toFixed(2) + "s"); });
   });
   if (!reduce && "IntersectionObserver" in window) {
     var ltIo = new IntersectionObserver(function (es) {
@@ -1380,7 +1566,8 @@ html[data-lang="en"] .wf-node b { font-family: var(--f-lat); }
   }
   // On narrow screens open the timeline at the present, so the current era is seen first
   var ltScroll = document.querySelector(".lt-scroll");
-  if (ltScroll.scrollWidth > ltScroll.clientWidth) ltScroll.scrollLeft = ltScroll.scrollWidth;
+  // Skip tiny overflows: a few pixels of scroll only clips the first lane label
+  if (ltScroll.scrollWidth - ltScroll.clientWidth > 40) ltScroll.scrollLeft = ltScroll.scrollWidth;
 
 
   // Channel workspace: three tabs for the system's three core requirements (all data fictional)
