@@ -416,6 +416,47 @@ html[data-lang="en"] .facts li { grid-template-columns: 82px minmax(0, 1fr); }
 .fbtn.go { background: linear-gradient(180deg, var(--gold-2), var(--gold)); color: #1a130a; border-color: transparent; }
 .fbtn[hidden] { display: none; }
 
+/* Number plus its measure word, e.g. 5 层 / 49 个 */
+.hl b small { font-family: var(--f-cn); font-weight: 500; font-size: 14px; letter-spacing: .02em; margin-left: 3px; color: var(--ink-2); }
+html[data-lang="en"] .hl b small { font-family: var(--f-lat); font-size: 13px; letter-spacing: 0; margin-left: 5px; }
+
+/* Memory system feature: five short chats, each showing one ability */
+.feature.mem { margin-top: 18px; }
+.mem .hl { margin-top: 26px; }
+.mem-repo { margin: 22px 0 0; }
+.mem-link { font-size: 13.5px; color: var(--gold-2); text-decoration: none; border-bottom: 1px solid rgba(232,180,108,.35); padding-bottom: 2px; }
+.mem-link:hover { color: var(--ink); border-color: var(--ink-2); }
+.mem-tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+.mem-tab { position: relative; overflow: hidden; font: 500 13px var(--f-cn); color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 10px; padding: 7px 4px 9px; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+.mem-tab small { display: block; font: 400 10.5px var(--f-mono); letter-spacing: .04em; color: var(--muted); margin-bottom: 1px; }
+html[data-lang="en"] .mem-tab { font-family: var(--f-lat); font-size: 12px; }
+.mem-tab:hover { color: var(--ink-2); }
+.mem-tab.on { color: var(--ink); border-color: rgba(232,180,108,.45); background: rgba(232,180,108,.07); }
+.mem-tab.on small { color: var(--gold-2); }
+.mem-tab i { position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: linear-gradient(90deg, var(--gold), var(--gold-2)); }
+.mem-chat { margin-top: 10px; height: 288px; overflow: hidden; display: flex; flex-direction: column; gap: 9px; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: rgba(0,0,0,.25); }
+.mem-b { max-width: 86%; font-size: 13.5px; line-height: 1.6; padding: 8px 12px; border-radius: 14px; animation: memIn .28s cubic-bezier(.2,.8,.2,1) both; }
+.mem-b.u { align-self: flex-end; color: var(--ink); background: rgba(232,180,108,.15); border-bottom-right-radius: 4px; }
+.mem-b.a { align-self: flex-start; color: var(--ink-2); background: rgba(255,255,255,.045); border: 1px solid var(--line-2); border-bottom-left-radius: 4px; }
+.mem-b em { font-style: normal; color: var(--gold-2); }
+.mem-sys { align-self: center; font-size: 11.5px; letter-spacing: .12em; color: var(--muted); animation: memIn .28s both; }
+.mem-typing { align-self: flex-start; display: flex; gap: 4px; padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,.045); animation: memIn .2s both; }
+.mem-typing span { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); animation: memDot 1s infinite; }
+.mem-typing span:nth-child(2) { animation-delay: .15s; } .mem-typing span:nth-child(3) { animation-delay: .3s; }
+.mem-log { align-self: stretch; font: 12px/1.65 var(--f-mono); color: var(--ink-2); padding-left: 2px; }
+.mem-log div { animation: memIn .25s both; }
+.mem-log b { color: var(--ok); font-weight: 400; margin-right: 8px; }
+.mem-log .k { display: inline-block; min-width: 5.5em; color: var(--muted); }
+html[data-lang="en"] .mem-log .k { min-width: 7.5em; }
+.mem-layers { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
+.mem-layer { font-size: 11.5px; text-align: center; padding: 7px 2px; border-radius: 9px; border: 1px solid var(--line); color: var(--muted); transition: color .25s, border-color .25s, background .25s; }
+.mem-layer.on { color: var(--gold-2); border-color: rgba(232,180,108,.45); background: rgba(232,180,108,.1); }
+.mem-cap { margin: 10px 0 0; min-height: 1.6em; font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+@keyframes memIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes memDot { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+@media (max-width: 560px) { .mem-layers { grid-template-columns: repeat(3, minmax(0, 1fr)); } .mem-chat { height: 312px; padding: 14px; } .mem-tab { font-size: 12px; padding: 6px 2px 8px; } .mem-b { max-width: 92%; } }
+@media (prefers-reduced-motion: reduce) { .mem-b, .mem-sys, .mem-typing, .mem-log div { animation: none; } }
+
 /* Off the board */
 .ob { margin-top: 56px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
 .ob > * { min-width: 0; }
@@ -1107,6 +1148,29 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
       </div>
     </article>
 
+    <article class="feature mem">
+      <div class="f-text">
+        <div class="f-kicker"><span class="st live"><i></i><span lang="zh">开源 · 每天在用</span><span lang="en">Open source · in daily use</span></span><span class="cat"><span lang="zh">Agent 系统</span><span lang="en">Agent system</span></span></div>
+        <h3><span lang="zh">有长期记忆的个人助手</span><span lang="en">A personal assistant with long-term memory</span></h3>
+        <p class="one"><span lang="zh">让 AI 记住一个人不难，难的是让它知道什么该忘、什么已经不成立。</span><span lang="en">Getting AI to remember someone is easy. The hard part is knowing what to forget, and what no longer holds.</span></p>
+        <ul class="hl">
+          <li><b>5<small><span lang="zh">层</span><span lang="en">layers</span></small></b><span><span lang="zh">记忆</span><span lang="en">of memory</span></span></li>
+          <li><b>49<small><span lang="zh">个</span><span lang="en">tests</span></small></b><span><span lang="zh">结构测试</span><span lang="en">on the structure</span></span></li>
+          <li><b>5<small><span lang="zh">版</span><span lang="en">versions</span></small></b><span><span lang="zh">提示词迭代</span><span lang="en">of the prompt</span></span></li>
+        </ul>
+        <p class="mem-repo"><a class="mem-link" href="https://github.com/Silvius-Eee/yisu-memory" target="_blank" rel="noopener"><span lang="zh">开源仓库 · GitHub ↗</span><span lang="en">Open-source repo · GitHub ↗</span></a></p>
+      </div>
+      <div class="f-demo">
+        <div class="mem-demo" id="mem-demo">
+          <div class="mem-tabs" id="mem-tabs"></div>
+          <div class="mem-chat" id="mem-chat" aria-live="polite"></div>
+          <div class="mem-layers" id="mem-layers"></div>
+          <p class="mem-cap" id="mem-cap"></p>
+        </div>
+        <p class="demo-note"><span lang="zh">演示内容为虚构</span><span lang="en">Demo content is fictional.</span></p>
+      </div>
+    </article>
+
     <div class="duo">
       <article class="card mp">
         <div class="f-kicker"><span class="st live"><i></i><span lang="zh">已上线 · 微信可搜</span><span lang="en">Live · searchable in WeChat</span></span><span class="cat"><span lang="zh">AI 独立开发</span><span lang="en">AI indie build</span></span></div>
@@ -1114,7 +1178,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
         <p class="one"><span lang="zh">线下发牌，线上记分。几台手机同步座位、行动和筹码，边池、全下、平分都算得清，口袋里不用再揣一盒筹码。</span><span lang="en">Cards stay on the table, scores go on the phones. Several phones stay in sync on seats, turns and chips. Side pots, all-ins and split pots all add up, and nobody has to carry a box of chips.</span></p>
         <ul class="hl">
           <li><b><span lang="zh">多机</span><span lang="en">Multi</span></b><span><span lang="zh">实时同步</span><span lang="en">phones in sync</span></span></li>
-          <li><b>21</b><span><span lang="zh">个规则测试</span><span lang="en">rule tests</span></span></li>
+          <li><b>21<small><span lang="zh">个</span><span lang="en">tests</span></small></b><span><span lang="zh">规则测试</span><span lang="en">on the scoring rules</span></span></li>
           <li><b><span lang="zh">虚拟</span><span lang="en">Virtual</span></b><span><span lang="zh">不碰真实金额</span><span lang="en">no real money</span></span></li>
         </ul>
         <div class="mp-stage" aria-hidden="true">
@@ -1134,7 +1198,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
         <h3><span lang="zh">心理学与经济学科普</span><span lang="en">Psychology &amp; economics explainers</span></h3>
         <p class="one"><span lang="zh">用博弈论和心理学解释关系里的小事。从选题、核对资料到用 Remotion 写代码做动画，都和 AI 一起完成。</span><span lang="en">Game theory and psychology for the small moments in relationships. From picking topics and checking sources to animating in code with Remotion, made together with AI.</span></p>
         <div class="covers">
-          <div class="cover c1"><span class="kind"><span lang="zh">博弈论</span><span lang="en">Game theory</span></span><b><span lang="zh">猎鹿博弈</span><span lang="en">Stag Hunt</span></b><span class="vstats"><span class="vs big" aria-label="views"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><span lang="zh">39w</span><span lang="en">390K</span></span><span class="vs" aria-label="likes"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span lang="zh">1.8w</span><span lang="en">18K</span></span></span></div>
+          <div class="cover c1"><span class="kind"><span lang="zh">博弈论</span><span lang="en">Game theory</span></span><b><span lang="zh">猎鹿博弈</span><span lang="en">Stag Hunt</span></b><span class="vstats"><span class="vs big" aria-label="views"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><span lang="zh">40w</span><span lang="en">400K</span></span><span class="vs" aria-label="likes"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span lang="zh">1.9w</span><span lang="en">19K</span></span></span></div>
           <div class="cover c2"><span class="kind"><span lang="zh">社会心理学</span><span lang="en">Social psych</span></span><b><span lang="zh">喜欢差距</span><span lang="en">Liking Gap</span></b><span class="vstats"><span class="vs big" aria-label="views"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><span lang="zh">13w</span><span lang="en">130K</span></span><span class="vs" aria-label="likes"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span>4.2k</span></span></span></div>
           <div class="cover c3"><span class="kind"><span lang="zh">人际吸引</span><span lang="en">Attraction</span></span><b><span lang="zh">独特吸引</span><span lang="en">Unique Attraction</span></b><span class="vstats"><span class="vs big" aria-label="views"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><span lang="zh">10w</span><span lang="en">100K</span></span><span class="vs" aria-label="likes"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span>4.1k</span></span></span></div>
         </div>
@@ -1354,8 +1418,8 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
      "A product newcomer with a financial engineering background, who has worked on B2B products in cross-border payments and warehouse logistics, and uses AI every day to code, prototype and create."],
     ["三段实习，覆盖跨境支付、海外 SaaS 和仓储物流；独立开发过一个已上线的微信小程序。",
      "Three internships across cross-border payments, overseas SaaS and warehouse logistics; built and shipped a WeChat mini program on his own."],
-    ["2023 年起高强度使用 AI，用它做出 20 多条心理学与经济学科普视频，单条最高 39 万播放。",
-     "A heavy AI user since 2023, who used it to make 20+ psychology and economics explainer videos, the top one at 390K views."]
+    ["2023 年起高强度使用 AI，用它做出 20 多条心理学与经济学科普视频，单条最高 40 万播放。",
+     "A heavy AI user since 2023, who used it to make 20+ psychology and economics explainer videos, the top one at 400K views."]
   ];
   var angles = [["背景", "Background"], ["经历", "Experience"], ["AI 与内容", "AI & content"]];
   var introIdx = 0;
@@ -1663,7 +1727,86 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
   });
   renderFlow();
 
-  // Mini-program mock: six seats around the felt, action moves round the table
+  // Memory demo: five short chats, each showing one ability; layers light up underneath
+    var memDemo = document.getElementById("mem-demo");
+    if (memDemo) {
+      var memChat = document.getElementById("mem-chat"), memTabs = document.getElementById("mem-tabs"), memLayers = document.getElementById("mem-layers"), memCap = document.getElementById("mem-cap");
+      var memL = [["速记", "Daily note"], ["当前状态", "Now"], ["本周", "This week"], ["已结周", "Past weeks"], ["已失效", "Retired"], ["原始对话", "Transcripts"]];
+      // step: [ms, kind, zh, en, layers]
+      var memS = [
+        { k: ["记得住", "Remembers"], cap: ["新对话先读当前状态，和昨天还没同步的速记。", "A new chat reads the current state and yesterday's unsynced notes."], dur: 4200, steps: [
+          [0, "sys", "新对话", "New chat"], [150, "u", "今晚有课吗？", "Do I have class tonight?"], [450, "typing"],
+          [800, "a", "有，19:30 游泳。<em>昨天你说想换泳镜</em>，买了吗？", "Yes, swimming at 19:30. <em>Yesterday you wanted new goggles</em>. Did you get them?", [0, 1]]] },
+        { k: ["分得清", "Tells apart"], cap: ["事实和计划分开记，计划不会被记成已完成。", "Facts and plans are kept apart, so a plan is never logged as done."], dur: 4000, steps: [
+          [0, "u", "调研我交了吧？", "I handed in the survey, right?"], [300, "typing"],
+          [650, "a", "还不算。周三你说的是“周五前交”，那是<em>计划</em>，之后没听你说交了。", "Not yet. On Wednesday you said “by Friday”. That's a <em>plan</em>, and I haven't heard it was done.", [2]]] },
+        { k: ["会更新", "Updates"], cap: ["被推翻的判断不悄悄改掉，带着证据和日期留底。", "An overturned belief isn't quietly edited. It's retired with the evidence and the date."], dur: 4200, steps: [
+          [0, "u", "你记得我不吃辣吧？", "You remember I don't eat spicy food, right?"], [300, "typing"],
+          [650, "a", "这条 <em>11/05 已作废</em>：那天你点了一桌川菜。旧记录还在，旁边写着为什么作废。", "That one was <em>retired on 11/05</em>, the day you ordered a whole Sichuan spread. The old note is still there, with the reason it was retired.", [4]]] },
+        { k: ["有出处", "Cites"], cap: ["措辞要紧时回原始对话查原话，不拿自己的总结当证据。", "When wording matters, it checks the original words, not its own summary."], dur: 4000, steps: [
+          [0, "u", "我上次怎么评价那家店？", "What did I say about that restaurant?"], [300, "typing"],
+          [650, "a", "<em>原话</em>是“味道一般，但离公司近”，出自 11/03 的对话。", "Your <em>exact words</em>: “the food's so-so, but it's close to the office”, from the 11/03 chat.", [5]]] },
+        { k: ["会同步", "Syncs"], cap: ["只有明确说要写才动文件；写完先校验，再提交一次。", "It writes only when asked, then checks the result and commits once."], dur: 5800, steps: [
+          [0, "u", "同步一下今天。", "Sync today."], [250, "typing"],
+          [550, "a", "这句先算聊天总结，<em>不改文件</em>。要写进记忆库吗？", "I'll treat that as a chat summary and <em>won't touch any files</em>. Write it to memory?"],
+          [1350, "u", "写吧。", "Yes, write it."],
+          [1750, "log", "本周记录|新增 11/12", "This week|added 11/12", [2]],
+          [2000, "log", "当前状态|更新 2 条，淘汰 1 条", "Now|2 updated, 1 removed", [1]],
+          [2250, "log", "速记|收尾", "Daily note|closed", [0]],
+          [2500, "log", "结构校验|通过", "Checks|passed"],
+          [2750, "log", "提交|同步 11-12", "Commit|sync 11-12"]] }
+      ];
+      var memReduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      memTabs.innerHTML = memS.map(function (sc, j) { return '<button type="button" class="mem-tab"><small>0' + (j + 1) + "</small>" + t(sc.k[0], sc.k[1]) + "<i></i></button>"; }).join("");
+      memLayers.innerHTML = memL.map(function (l) { return '<div class="mem-layer">' + t(l[0], l[1]) + "</div>"; }).join("");
+      var memI = 0, memT = 0, memShown = 0, memLast = null, memHover = false, memSeen = false;
+      var memGo = function (j) {
+        memI = j; memT = memReduce ? 1e9 : 0; memShown = 0; memChat.innerHTML = ""; memCap.innerHTML = t(memS[j].cap[0], memS[j].cap[1]);
+        [].forEach.call(memTabs.children, function (b, n) { b.classList.toggle("on", n === j); b.setAttribute("aria-pressed", String(n === j)); b.lastChild.style.width = n === j && memReduce ? "100%" : "0"; });
+        [].forEach.call(memLayers.children, function (l) { l.classList.remove("on"); });
+        memDraw();
+      };
+      var memDraw = function () {
+        var steps = memS[memI].steps;
+        while (memShown < steps.length && steps[memShown][0] <= memT) {
+          var st = steps[memShown], kind = st[1], el;
+          if (kind !== "typing") { var tp = memChat.querySelector(".mem-typing"); if (tp) tp.remove(); }
+          if (kind === "typing") { if (memReduce) { memShown++; continue; } el = document.createElement("div"); el.className = "mem-typing"; el.innerHTML = "<span></span><span></span><span></span>"; }
+          else if (kind === "sys") { el = document.createElement("div"); el.className = "mem-sys"; el.innerHTML = "— " + t(st[2], st[3]) + " —"; }
+          else if (kind === "log") {
+            var box = memChat.querySelector(".mem-log");
+            if (!box) { box = document.createElement("div"); box.className = "mem-log"; memChat.appendChild(box); }
+            var zh = st[2].split("|"), en = st[3].split("|"), line = document.createElement("div"); line.innerHTML = "<b>✓</b>" + t('<span class="k">' + zh[0] + "</span>" + zh[1], '<span class="k">' + en[0] + "</span>" + en[1]); box.appendChild(line); el = null;
+          } else { el = document.createElement("div"); el.className = "mem-b " + kind; el.innerHTML = t(st[2], st[3]); }
+          if (el) memChat.appendChild(el);
+          (st[4] || []).forEach(function (n) { memLayers.children[n].classList.add("on"); });
+          memShown++;
+        }
+        memChat.scrollTop = memChat.scrollHeight;
+      };
+      var memTick = function (ts) {
+        var dt = memLast == null ? 0 : Math.min(ts - memLast, 100);
+        memLast = ts;
+        // Hovering never freezes a scene halfway; it only holds the finished scene instead of moving on
+        if (memSeen && !memReduce && !document.hidden) {
+          var dur = memS[memI].dur;
+          memT = memHover ? Math.min(memT + dt, dur) : memT + dt;
+          if (memT >= dur && !memHover) memGo((memI + 1) % memS.length);
+          else { memDraw(); memTabs.children[memI].lastChild.style.width = (Math.min(memT / dur, 1) * 100).toFixed(1) + "%"; }
+        }
+        requestAnimationFrame(memTick);
+      };
+      [].forEach.call(memTabs.children, function (b, j) { b.addEventListener("click", function () { memGo(j); }); });
+      memDemo.addEventListener("mouseenter", function () { memHover = true; });
+      memDemo.addEventListener("mouseleave", function () { memHover = false; });
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (es) { es.forEach(function (e) { memSeen = e.isIntersecting; }); }, { threshold: 0.35 }).observe(memDemo);
+      } else { memSeen = true; }
+      memGo(0);
+      requestAnimationFrame(memTick);
+    }
+
+    // Mini-program mock: six seats around the felt, action moves round the table
   var felt = document.getElementById("felt");
   var seatPos = [[24, 6], [76, 6], [97, 50], [76, 94], [24, 94], [3, 50]];
   var seatChips = [1860, 920, 2400, 640, 1500, 1120];
