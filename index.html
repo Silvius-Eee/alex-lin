@@ -239,8 +239,7 @@ html[data-lang="en"] .head h2 { font-family: var(--f-lat); font-weight: 600; let
   .cover .kind, .cover b { grid-column: 1; }
   .cover b { margin-top: 4px; font-size: 19px; }
   .cover .vstats { grid-column: 2; grid-row: 1 / span 2; align-self: center; margin: 0; justify-items: end; }
-  .prod b { flex-wrap: wrap; }
-}
+  }
 .tl-axis { padding-bottom: 14px; }
 .track { position: relative; }
 .tl-axis .track { height: 20px; }
@@ -326,7 +325,6 @@ html[data-lang="en"] .toolbox h3 { font-family: var(--f-lat); font-weight: 600; 
 .f-kicker .pill { color: var(--gold-2); border: 1px solid rgba(232,180,108,.35); border-radius: 999px; padding: 3px 11px; }
 .f-text h3 { margin: 22px 0 0; font-weight: 900; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.2; letter-spacing: .01em; }
 html[data-lang="en"] .f-text h3 { font-family: var(--f-lat); font-weight: 600; letter-spacing: -.02em; }
-.f-text .sub { margin: 6px 0 0; font-family: var(--f-serif); font-style: italic; font-size: 22px; color: var(--gold-2); }
 .f-text .one { margin: 22px 0 0; color: var(--ink-2); font-size: 16px; line-height: 1.8; }
 .facts { margin: 30px 0 0; padding: 0; list-style: none; display: grid; gap: 0; }
 .facts li { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 16px; padding-block: 14px; border-top: 1px solid var(--line); font-size: 14.5px; }
@@ -334,12 +332,7 @@ html[data-lang="en"] .f-text h3 { font-family: var(--f-lat); font-weight: 600; l
 html[data-lang="en"] .facts li { grid-template-columns: 82px minmax(0, 1fr); }
 
 .f-demo { position: relative; padding: clamp(24px, 3.4vw, 44px); background: radial-gradient(120% 90% at 80% 10%, rgba(232,180,108,.16), transparent 60%), rgba(0,0,0,.25); border-left: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
-@media (max-width: 900px) { .f-demo { border-left: 0; border-top: 1px solid var(--line); } }
-.app { border-radius: 18px; background: rgba(17,19,25,.85); border: 1px solid var(--line-2); box-shadow: 0 30px 60px -24px rgba(0,0,0,.8); overflow: hidden; }
-.app-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--line); }
-.app-top .t { font-weight: 500; font-size: 14px; }
-.app-top .t small { display: block; font: 400 12px var(--f-cn); color: var(--muted); margin-top: 3px; }
-.progress { font: 500 12px var(--f-lat); color: var(--gold-2); }
+@media (max-width: 900px) { .f-demo { border-left: 0; border-top: 1px solid var(--line); } }.progress { font: 500 12px var(--f-lat); color: var(--gold-2); }
 .bar { height: 3px; background: var(--line); }
 .bar i { display: block; height: 100%; width: 62%; background: linear-gradient(90deg, var(--gold), var(--gold-2)); box-shadow: 0 0 12px var(--gold-glow); transition: width .6s cubic-bezier(.2,.8,.2,1); }
 .steps { list-style: none; margin: 0; padding: 8px 20px; }
@@ -353,68 +346,65 @@ html[data-lang="en"] .facts li { grid-template-columns: 82px minmax(0, 1fr); }
 .state { font-size: 11.5px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line-2); white-space: nowrap; }
 .done .state { color: var(--ok); border-color: rgba(127,209,168,.35); }
 .here .state { color: var(--gold-2); border-color: rgba(232,180,108,.45); background: rgba(232,180,108,.08); }
-.app-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 20px 18px; border-top: 1px solid var(--line); }
-.app-foot span { font-size: 12px; color: var(--muted); }
-.app-foot button { font: 500 13px var(--f-cn); color: #1a130a; background: linear-gradient(180deg, var(--gold-2), var(--gold)); border: 0; border-radius: 10px; padding: 9px 16px; cursor: pointer; transition: transform .2s; }
-.app-foot button:hover { transform: translateY(-1px); }
 .demo-note { margin-top: 16px; font-size: 12.5px; color: var(--muted); text-align: center; }
 
-/* Channel workspace demo */
-.ws-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 10px 14px 0; border-bottom: 1px solid var(--line); }
-.ws-tabs button { font: 500 13px var(--f-cn); color: var(--muted); background: none; border: 0; padding: 10px 6px 12px; cursor: pointer; position: relative; transition: color .2s; }
-.ws-tabs button::after { content: ""; position: absolute; left: 18%; right: 18%; bottom: -1px; height: 2px; border-radius: 2px; background: transparent; transition: background .25s; }
-.ws-tabs button[aria-selected="true"] { color: var(--ink); }
-.ws-tabs button[aria-selected="true"]::after { background: linear-gradient(90deg, var(--gold), var(--gold-2)); box-shadow: 0 0 10px var(--gold-glow); }
-.ws-pane { padding: 18px 20px 20px; min-height: 352px; animation: rise .45s cubic-bezier(.2,.8,.2,1) both; }
-
-.prod-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-.prod { text-align: left; font: inherit; color: var(--ink-2); cursor: pointer; border-radius: 12px; padding: 12px 13px 13px; border: 1px solid var(--line); background: rgba(255,255,255,.025); transition: border-color .25s, background .25s; min-width: 0; }
-.prod:hover { border-color: var(--line-2); }
-.prod.on { border-color: rgba(232,180,108,.5); background: rgba(232,180,108,.07); color: var(--ink); }
-.prod b { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font: 600 13.5px var(--f-lat); color: var(--ink); }
-.prod b small { font: 500 11px var(--f-lat); color: var(--muted); }
-.prod .pbar { display: block; margin-top: 10px; height: 3px; border-radius: 3px; background: var(--line); overflow: hidden; }
-.prod .pbar i { display: block; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-2)); }
-.prod .pbar i.full { background: var(--ok); }
-.fields { margin: 14px 0 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 14px; font-size: 13px; }
-.fields dt, .fields dd { padding-block: 9px; border-top: 1px solid var(--line); }
-.fields dt { color: var(--muted); white-space: nowrap; }
-.fields dd { margin: 0; color: var(--ink); text-align: right; }
-.fields dd.miss { color: var(--gold-2); }
-
-.roles-sw { display: flex; flex-wrap: wrap; gap: 6px; }
-.roles-sw button { font: 500 12.5px var(--f-cn); padding: 6px 13px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--ink-2); background: none; cursor: pointer; transition: all .2s; }
-.roles-sw button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.ch-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 6px; }
-.ch-list li { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 10px; border: 1px solid var(--line); font-size: 13px; transition: opacity .3s, filter .3s; }
-.ch-list li b { font: 500 13px var(--f-lat); }
-.ch-list li span { font-size: 11.5px; color: var(--muted); white-space: nowrap; }
-.ch-list li.mine span { color: var(--ok); }
-.ch-list li.locked { opacity: .45; filter: blur(.4px); border-style: dashed; }
-.ch-list li.locked b { color: var(--muted); }
-.perm { margin-top: 14px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
-.perm div { min-width: 0; text-align: center; padding: 9px 4px 10px; border-radius: 10px; background: rgba(255,255,255,.03); border: 1px solid var(--line); font-size: 11.5px; color: var(--muted); }
-.perm div b { display: block; margin-bottom: 3px; font-size: 15px; font-family: var(--f-lat); }
-.perm .y b { color: var(--ok); } .perm .p b { color: var(--gold-2); } .perm .n b { color: rgba(243,239,231,.3); }
-
-.flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.flow li { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding-block: 10px; font-size: 13.5px; color: var(--muted); position: relative; }
-.flow li + li { border-top: 1px solid var(--line); }
-.flow .dot { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--line-2); display: grid; place-items: center; font: 600 10px var(--f-lat); transition: all .35s; }
-.flow .who { display: block; font-size: 11px; color: var(--muted); margin-top: 1px; }
-.flow .done { color: var(--ink-2); } .flow .done .dot { border-color: var(--ok); color: var(--ok); background: rgba(127,209,168,.12); }
-.flow .here { color: var(--ink); } .flow .here .dot { border-color: var(--gold); background: var(--gold); color: #1a130a; box-shadow: 0 0 0 5px rgba(232,180,108,.15); }
-.flow .back { color: var(--ink); } .flow .back .dot { border-color: #e59a7a; color: #e59a7a; background: rgba(229,154,122,.12); }
-.flow .tag { font-size: 11px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line-2); white-space: nowrap; }
-.flow .done .tag { color: var(--ok); border-color: rgba(127,209,168,.35); }
-.flow .here .tag { color: var(--gold-2); border-color: rgba(232,180,108,.45); background: rgba(232,180,108,.08); }
-.flow .back .tag { color: #e59a7a; border-color: rgba(229,154,122,.4); }
-.flow-note { margin: 12px 0 0; min-height: 2.6em; font-size: 12.5px; line-height: 1.6; color: var(--ink-2); }
-.flow-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
-.fbtn { font: 500 13px var(--f-cn); padding: 8px 15px; border-radius: 10px; border: 1px solid var(--line-2); color: var(--ink-2); background: none; cursor: pointer; transition: transform .2s, color .2s, border-color .2s; }
-.fbtn:hover { transform: translateY(-1px); color: var(--ink); border-color: var(--ink-2); }
-.fbtn.go { background: linear-gradient(180deg, var(--gold-2), var(--gold)); color: #1a130a; border-color: transparent; }
-.fbtn[hidden] { display: none; }
+/* Payment card: three quick acts (entry, permissions, approval) and links to the live prototype */
+.pc-notes { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 8px; }
+.pc-notes li { display: flex; gap: 12px; font-size: 14px; line-height: 1.65; color: var(--ink-2); }
+.pc-notes li b { flex: none; min-width: 3.6em; font-weight: 500; color: var(--muted); }
+.feature .f-text .hl { margin-top: 26px; }
+#pc-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pc-links { display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 22px 0 0; }
+.pc-stage { margin-top: 10px; min-height: 252px; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: rgba(0,0,0,.25); }
+.pc-who { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 12px; color: var(--muted); }
+.pc-who b { font-weight: 500; color: var(--gold-2); border: 1px solid rgba(232,180,108,.45); border-radius: 999px; padding: 1px 10px; animation: memIn .25s both; }
+.pc-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.pc-col > span { display: block; height: 20px; line-height: 20px; font: 600 12.5px/20px var(--f-lat); color: var(--ink-2); margin-bottom: 6px; }
+.pc-col > span span[lang="zh"] { font-family: var(--f-cn); }
+.pc-cell { position: relative; height: 46px; margin-bottom: 6px; padding: 5px 9px; border-radius: 9px; border: 1px dashed var(--line-2); transition: border-color .2s, background .2s; }
+.pc-cell small { display: block; font-size: 10.5px; line-height: 1.3; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pc-cell em { display: block; margin-top: 2px; font-style: normal; font-size: 12.5px; line-height: 1.4; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pc-cell.new em { animation: memIn .25s both; }
+.pc-cell.fill { border-style: solid; border-color: var(--line); }
+.pc-cell.miss { border-style: solid; border-color: rgba(240,195,106,.6); background: rgba(240,195,106,.07); }
+.pc-cell.miss em { color: #f0c36a; }
+.pc-mx { width: 100%; border-collapse: collapse; margin-top: 4px; }
+.pc-mx th { text-align: left; font-weight: 400; font-size: 11.5px; color: var(--muted); padding: 0 10px 8px; }
+.pc-mx td { padding: 11px 10px; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); transition: color .25s, background .25s, opacity .25s; }
+.pc-mx td:first-child { font-weight: 600; color: var(--ink); width: 18%; }
+.pc-mx tbody tr { opacity: .45; transition: opacity .25s; }
+.pc-mx tbody tr.on { opacity: 1; }
+.pc-mx tbody tr.on td { background: rgba(232,180,108,.08); }
+.pc-mx tbody tr.on td:first-child { color: var(--gold-2); border-radius: 10px 0 0 10px; }
+.pc-mx tbody tr.on td:last-child { border-radius: 0 10px 10px 0; }
+.pc-mx .y { color: var(--ok); }
+.pc-mx .n { color: var(--muted); }
+.pc-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 8px; font-size: 12.5px; color: var(--muted); }
+.pc-bar b { font-weight: 500; font-size: 12px; padding: 5px 12px; border-radius: 9px; border: 1px solid var(--line-2); color: var(--muted); transition: all .25s; }
+.pc-bar b.ok { background: linear-gradient(180deg, var(--gold-2), var(--gold)); color: #1a130a; border-color: transparent; }
+.pc-track { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 26px 0 8px; }
+.pc-track::before { content: ""; position: absolute; left: 10%; right: 10%; top: 15px; height: 2px; background: var(--line-2); }
+.pc-node { position: relative; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.pc-dot { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 12px var(--f-mono); color: var(--muted); background: #15171d; border: 1px solid var(--line-2); transition: all .25s; }
+.pc-node b { font-size: 12.5px; font-weight: 500; color: var(--muted); }
+.pc-node.is-done .pc-dot { color: #1a130a; background: linear-gradient(180deg, var(--gold-2), var(--gold)); border-color: transparent; }
+.pc-node.is-done b { color: var(--ink-2); }
+.pc-node.is-now .pc-dot { color: var(--gold-2); border-color: var(--gold); box-shadow: 0 0 0 5px rgba(232,180,108,.14), 0 0 18px var(--gold-glow); }
+.pc-node.is-back .pc-dot { color: #f2b7a3; border-color: rgba(240,153,123,.75); box-shadow: 0 0 0 5px rgba(240,153,123,.12); }
+.pc-node.is-back b { color: #f2b7a3; }
+.pc-log { margin: 20px 0 0; padding: 0; list-style: none; font: 12px/1.75 var(--f-mono); color: var(--ink-2); }
+.pc-log li { animation: memIn .25s both; }
+.pc-log li.back { color: #f2b7a3; }
+@media (max-width: 560px) {
+  .pc-stage { padding: 12px; min-height: 0; }
+  .pc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pc-cell { height: 42px; margin-bottom: 5px; }
+  .pc-mx td, .pc-mx th { padding: 10px 4px; white-space: nowrap; }
+  .pc-mx th { padding-top: 0; font-size: 10.5px; }
+  .pc-mx td { font-size: 11px; }
+  .pc-mx td:first-child { width: auto; }
+  .pc-node b { font-size: 11.5px; }
+}
 
 /* Number plus its measure word, e.g. 5 层 / 49 个 */
 .hl b small { font-family: var(--f-cn); font-weight: 500; font-size: 14px; letter-spacing: .02em; margin-left: 3px; color: var(--ink-2); }
@@ -1021,8 +1011,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
   .cover .kind, .cover b { grid-column: 1; }
   .cover b { margin-top: 4px; font-size: 19px; }
   .cover .vstats { grid-column: 2; grid-row: 1 / span 2; align-self: center; margin: 0; justify-items: end; }
-  .prod b { flex-wrap: wrap; }
-}
+  }
 @media (prefers-reduced-motion: reduce) { .marquee-track { flex-wrap: wrap; width: auto; } .rise, .sky i, .marquee-track, .hello .live, .log .typing::after { animation: none !important; } html { scroll-behavior: auto; } }
 </style>
 </head>
@@ -1103,48 +1092,25 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
       <div class="f-text">
         <div class="f-kicker"><span class="st rebuild"><i></i><span lang="zh">作品集重建 · 数据虚构</span><span lang="en">Portfolio rebuild · fictional data</span></span><span class="cat"><span lang="zh">产品原型</span><span lang="en">Product prototype</span></span></div>
         <h3><span lang="zh">跨境支付渠道管理系统</span><span lang="en">Cross-border payment channel management</span></h3>
-        <p class="sub">entry · access · approval</p>
         <p class="one"><span lang="zh">把渠道从创建、录入产品能力，到合规、法务、报价、资金审核，再到上线的整条链路，收进一个系统里，解决信息分散、责任人不清、审批靠人催的问题。</span><span lang="en">One system for a channel's whole path: creation, product capabilities, then compliance, legal, pricing and fund review, then launch. It replaces scattered data, unclear owners and approvals that only move when someone chases them.</span></p>
-        <ul class="facts">
-          <li><b><span lang="zh">角色</span><span lang="en">Role</span></b><span><span lang="zh">支付产品实习，负责 Payin、Payout、发卡、全球账户四条产品线的需求分析、方案设计与交付</span><span lang="en">Payments product intern, owning analysis, design and delivery for four product lines: Payin, Payout, Issuing Cards and Global Account</span></span></li>
-          <li><b><span lang="zh">核心</span><span lang="en">Core</span></b><span><span lang="zh">数据录入 · 数据隔离 · 权限审批</span><span lang="en">Data entry · data isolation · permissioned approval</span></span></li>
-          <li><b><span lang="zh">方法</span><span lang="en">Method</span></b><span><span lang="zh">七类交付状态，把业务规则、原型、开发和生产分开记账</span><span lang="en">Seven delivery states tracking rules, prototype, build and production apart</span></span></li>
-          <li><b>AI</b><span><span lang="zh">设计 FI Agent，支持渠道能力、费率查询和报价利润计算，接入模型 API 做了原型验证</span><span lang="en">Designed an FI Agent for capability lookup, fee queries and margin calculation, prototyped against a model API</span></span></li>
+        <ul class="hl">
+          <li><b>4<small><span lang="zh">条</span><span lang="en">lines</span></small></b><span><span lang="zh">产品线</span><span lang="en">of product</span></span></li>
+          <li><b>5<small><span lang="zh">道</span><span lang="en">steps</span></small></b><span><span lang="zh">审批</span><span lang="en">of approval</span></span></li>
+          <li><b>7<small><span lang="zh">类</span><span lang="en">states</span></small></b><span><span lang="zh">交付状态</span><span lang="en">of delivery</span></span></li>
         </ul>
+        <ul class="pc-notes">
+          <li><b><span lang="zh">我负责</span><span lang="en">My part</span></b><span><span lang="zh">需求分析、方案设计和交付</span><span lang="en">Requirements, solution design and delivery</span></span></li>
+          <li><b>AI</b><span><span lang="zh">设计 FI Agent，查费率、算报价利润</span><span lang="en">Designed an FI Agent that looks up fees and works out quote margins</span></span></li>
+        </ul>
+        <p class="pc-links"><a class="mem-link" href="https://silvius-eee.github.io/payment-channel-prototype/" target="_blank" rel="noopener"><span lang="zh">打开原型 ↗</span><span lang="en">Open the prototype ↗</span></a><a class="mem-link" href="https://github.com/Silvius-Eee/payment-channel-prototype" target="_blank" rel="noopener">GitHub ↗</a></p>
       </div>
-
       <div class="f-demo">
-        <div class="app ws">
-          <div class="app-top">
-            <div class="t"><span lang="zh">Corridor 工作台</span><span lang="en">Corridor workspace</span><small><span lang="zh">跨境支付渠道管理 · 演示数据</span><span lang="en">Payment channel management · demo data</span></small></div>
-          </div>
-          <div class="ws-tabs" role="tablist">
-            <button type="button" role="tab" id="tab-entry" data-pane="entry" aria-selected="true"><span lang="zh">数据录入</span><span lang="en">Data entry</span></button>
-            <button type="button" role="tab" id="tab-scope" data-pane="scope" aria-selected="false"><span lang="zh">数据隔离</span><span lang="en">Isolation</span></button>
-            <button type="button" role="tab" id="tab-flow" data-pane="flow" aria-selected="false"><span lang="zh">权限审批</span><span lang="en">Approval</span></button>
-          </div>
-
-          <div class="ws-pane" id="pane-entry" role="tabpanel">
-            <div class="prod-grid" id="prod-grid"></div>
-            <dl class="fields" id="fields"></dl>
-          </div>
-
-          <div class="ws-pane" id="pane-scope" role="tabpanel" hidden>
-            <div class="roles-sw" id="roles-sw"></div>
-            <ul class="ch-list" id="ch-list"></ul>
-            <div class="perm" id="perm"></div>
-          </div>
-
-          <div class="ws-pane" id="pane-flow" role="tabpanel" hidden>
-            <ol class="flow" id="flow"></ol>
-            <p class="flow-note" id="flow-note"></p>
-            <div class="flow-actions">
-              <button type="button" class="fbtn" id="f-back"><span lang="zh">退回修改</span><span lang="en">Request changes</span></button>
-              <button type="button" class="fbtn go" id="f-go"><span lang="zh">通过</span><span lang="en">Approve</span></button>
-            </div>
-          </div>
+        <div class="pc-demo" id="pc-demo">
+          <div class="mem-tabs" id="pc-tabs"></div>
+          <div class="pc-stage" id="pc-stage"></div>
+          <p class="mem-cap" id="pc-cap" aria-live="polite"></p>
         </div>
-        <p class="demo-note"><span lang="zh">作品集重建，Corridor 与数据均为虚构</span><span lang="en">Portfolio rebuild. Corridors and data are fictional.</span></p>
+        <p class="demo-note"><span lang="zh">作品集重建，渠道与数据均为虚构。完整的可交互原型在左边的链接里。</span><span lang="en">Portfolio rebuild with fictional data. The full interactive prototype is linked on the left.</span></p>
       </div>
     </article>
 
@@ -1634,98 +1600,112 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
   if (ltScroll.scrollWidth - ltScroll.clientWidth > 40) ltScroll.scrollLeft = ltScroll.scrollWidth;
 
 
-  // Channel workspace: three tabs for the system's three core requirements (all data fictional)
-  document.querySelectorAll(".ws-tabs button").forEach(function (b) {
-    b.addEventListener("click", function () {
-      document.querySelectorAll(".ws-tabs button").forEach(function (x) { x.setAttribute("aria-selected", String(x === b)); });
-      ["entry", "scope", "flow"].forEach(function (p) { document.getElementById("pane-" + p).hidden = p !== b.dataset.pane; });
-    });
-  });
-
-  var products = [
-    { n: "Payin", pct: 100, f: [[t("收款币种", "Currencies"), "BRL · MXN"], [t("结算周期", "Settlement"), "T+2"], [t("费率模式", "Fee model"), t("百分比 + 固定费", "Percent + fixed")], [t("支付方式", "Methods"), t("本地钱包 · 银行转账", "Local wallet · bank transfer")]] },
-    { n: "Payout", pct: 100, f: [[t("出款币种", "Currencies"), "USD · EUR"], [t("到账时效", "Arrival"), "T+1"], [t("单笔限额", "Per-payout limit"), "50,000 USD"], [t("出款方式", "Rails"), t("本地清算 · SWIFT", "Local rails · SWIFT")]] },
-    { n: t("发卡", "Issuing Cards"), pct: 75, f: [[t("卡组织", "Network"), "Visa"], [t("卡类型", "Card type"), t("虚拟卡", "Virtual")], [t("发卡地区", "Region"), "Region X"], [t("3DS 验证", "3DS"), t("待补充", "Missing"), 1]] },
-    { n: t("全球账户", "Global Account"), pct: 50, f: [[t("账户币种", "Currencies"), "USD · GBP"], [t("开户时效", "Opening time"), t("3 个工作日", "3 business days")], [t("收款方式", "Collection"), t("待补充", "Missing"), 1], [t("资金托管", "Safeguarding"), t("待补充", "Missing"), 1]] }
-  ];
-  var prodGrid = document.getElementById("prod-grid"), fieldsEl = document.getElementById("fields");
-  function showProduct(k) {
-    prodGrid.querySelectorAll(".prod").forEach(function (el, i) { el.classList.toggle("on", i === k); });
-    fieldsEl.innerHTML = products[k].f.map(function (f) { return '<dt>' + f[0] + '</dt><dd' + (f[2] ? ' class="miss"' : '') + '>' + f[1] + '</dd>'; }).join("");
+  // Payment demo: three quick acts. Entry (four product lines fill in), access (who may edit what), approval (one return on the way)
+  var pcDemo = document.getElementById("pc-demo");
+  if (pcDemo) {
+    var pcTabs = document.getElementById("pc-tabs"), pcStage = document.getElementById("pc-stage"), pcCap = document.getElementById("pc-cap");
+    // [label zh, label en, value zh, value en]; values are fictional
+    var pcP = [["Payin", [["收款币种", "Currencies", "雷亚尔、比索", "BRL, MXN"], ["结算周期", "Settlement", "T+2", "T+2"], ["通道费率", "Fees", "1.8% + 0.2", "1.8% + 0.2"], ["支付方式", "Methods", "本地钱包", "Local wallets"]]],
+      ["Payout", [["出款币种", "Currencies", "美元、欧元", "USD, EUR"], ["到账时效", "Arrival", "T+1", "T+1"], ["单笔限额", "Limit", "5 万美元", "50K USD"], ["出款方式", "Rails", "SWIFT", "SWIFT"]]],
+      [t("发卡", "Issuing"), [["卡组织", "Network", "Visa", "Visa"], ["卡类型", "Card type", "虚拟卡", "Virtual"], ["发卡地区", "Region", "拉美", "LatAm"], ["3DS 验证", "3DS", "已开启", "On"]]],
+      [t("全球账户", "Global Account"), [["账户币种", "Currencies", "美元、英镑", "USD, GBP"], ["开户时效", "Opening", "3 个工作日", "3 days"], ["收款方式", "Collection", "本地账户", "Local account"], ["资金托管", "Safeguarding", "合作银行", "Partner bank"]]]];
+    var pcRoles = [[["商务", "Sales"], ["自己的渠道", "Own channels"], ["自己的渠道", "Own channels"], ["提交", "Submits"], 1],
+      [["运营", "Ops"], ["自己的渠道", "Own channels"], ["自己的渠道", "Own channels"], ["提交", "Submits"], 1],
+      [["产品", "Product"], ["全部渠道", "All channels"], ["只改支付方式", "Payment methods only"], ["—", "—"], 0],
+      [["负责人", "Owner"], ["全部渠道", "All channels"], ["不改字段", "No field edits"], ["报价、终审", "Pricing, sign-off"], 1]];
+    var pcRoleCap = [t("商务和运营：只看得到、改得了自己负责的渠道，资料齐了由他们提交。", "Sales and Ops see and edit only the channels they own, and submit them when complete."),
+      t("商务和运营：只看得到、改得了自己负责的渠道，资料齐了由他们提交。", "Sales and Ops see and edit only the channels they own, and submit them when complete."),
+      t("产品：看得到全部渠道，但只能改支付方式。", "Product sees every channel but can only edit payment methods."),
+      t("负责人：看得到全部渠道，不改字段，负责报价审批和终审。", "The owner sees every channel, edits no fields, and approves pricing and launch.")];
+    var pcMiss = [11, 14, 15];
+    var pcStages = [["合规", "Compliance"], ["法务", "Legal"], ["报价", "Pricing"], ["资金", "Funds"], ["上线", "Launch"]];
+    var pcA = [{ k: ["录入", "Entry"], dur: 3000 }, { k: ["权限", "Access"], dur: 3400 }, { k: ["审批", "Approval"], dur: 3400 }];
+    pcTabs.innerHTML = pcA.map(function (a, j) { return '<button type="button" class="mem-tab"><small>0' + (j + 1) + "</small>" + t(a.k[0], a.k[1]) + "<i></i></button>"; }).join("");
+    var pcReduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var pcI = 0, pcT = 0, pcLast = null, pcHover = false, pcSeen = false, pcSig = "";
+    var pcGrid = function (cls) {
+      return '<div class="pc-grid">' + pcP.map(function (p, c) {
+        return '<div class="pc-col"><span>' + p[0] + "</span>" + p[1].map(function (f, r) {
+          var state = cls(c * 4 + r);
+          var val = state.indexOf("fill") > -1 ? "<em>" + t(f[2], f[3]) + "</em>" : state.indexOf("miss") > -1 ? "<em>" + t("待补充", "Missing") + "</em>" : "";
+          return '<div class="pc-cell ' + state + '"><small>' + t(f[0], f[1]) + "</small>" + val + "</div>";
+        }).join("") + "</div>";
+      }).join("") + "</div>";
+    };
+    var pcFrame = function () {
+      var ms = pcT, html, cap, sig;
+      if (pcI === 0) {
+        var filled = Math.max(0, Math.min(13, Math.floor((ms - 80) / 70) + 1));
+        var fixed = ms >= 2100, flag = ms >= 1300 && !fixed;
+        sig = "e" + filled + flag + fixed;
+        if (sig === pcSig) return;
+        var order = [];
+        for (var n = 0; n < 16; n++) if (pcMiss.indexOf(n) < 0) order.push(n);
+        var done = order.slice(0, filled);
+        html = '<div class="pc-who"><span>' + t("渠道 A · 四条产品线", "Channel A · four product lines") + "</span></div>" +
+          pcGrid(function (k) {
+            if (fixed) return pcMiss.indexOf(k) > -1 ? "fill new" : "fill";
+            if (done.indexOf(k) > -1) return k === done[done.length - 1] ? "fill new" : "fill";
+            return flag && pcMiss.indexOf(k) > -1 ? "miss new" : "";
+          }) +
+          '<div class="pc-bar"><span>' + (fixed ? t("字段齐全", "All fields complete") : flag ? t("还有 3 个字段待补充", "3 fields still missing") : t("录入中…", "Filling in…")) + '</span><b class="' + (fixed ? "ok" : "") + '">' + t("提交审批", "Submit") + "</b></div>";
+        cap = fixed ? t("补齐之后，才能提交审批。", "Only a complete channel can go to approval.") : t("四条产品线，每条有自己的字段；缺一个都不能提交。", "Four product lines, each with its own fields. One gap blocks submission.");
+      } else if (pcI === 1) {
+        var row = Math.min(3, Math.floor(ms / 800));
+        sig = "p" + row;
+        if (sig === pcSig) return;
+        html = '<div class="pc-who"><span>' + t("同一个系统，四种身份", "One system, four roles") + "</span></div>" +
+          '<table class="pc-mx"><thead><tr><th></th><th>' + t("能看到", "Sees") + "</th><th>" + t("能改", "Edits") + "</th><th>" + t("提交 / 审批", "Submits / approves") + "</th></tr></thead><tbody>" +
+          pcRoles.map(function (r, i) {
+            return '<tr class="' + (i === row ? "on" : "") + '"><td>' + t(r[0][0], r[0][1]) + "</td><td>" + t(r[1][0], r[1][1]) + "</td><td>" + t(r[2][0], r[2][1]) + '</td><td class="' + (r[4] ? "y" : "n") + '">' + t(r[3][0], r[3][1]) + "</td></tr>";
+          }).join("") + "</tbody></table>";
+        cap = pcRoleCap[row];
+      } else {
+        var marks = [300, 700, 1100, 1500, 2100, 2700];
+        var step = 0; while (step < marks.length && ms >= marks[step]) step++;
+        sig = "a" + step;
+        if (sig === pcSig) return;
+        var cls = function (i) {
+          if (step >= 6) return "is-done";
+          if (i < 3) return step > i ? "is-done" : step === i ? "is-now" : "";
+          if (i === 3) return step === 4 ? "is-back" : step >= 5 ? "is-done" : step === 3 ? "is-now" : "";
+          return step === 5 ? "is-now" : "";
+        };
+        var lines = [[t("合规审核通过", "Compliance approved")], [t("法务审核通过", "Legal approved")], [t("负责人确认报价", "Owner approved pricing")], [t("资金审核退回，补充后重新提交", "Funds sent it back; fixed and resubmitted"), "back"], [t("资金审核通过", "Funds approved")], [t("负责人终审，渠道上线", "Owner signed off; channel is live")]];
+        html = '<div class="pc-track">' + pcStages.map(function (st, i) { var c = cls(i); return '<div class="pc-node ' + c + '"><span class="pc-dot">' + (c === "is-done" ? "✓" : i + 1) + "</span><b>" + t(st[0], st[1]) + "</b></div>"; }).join("") + "</div>" +
+          '<ol class="pc-log">' + lines.slice(Math.max(0, step - 3), step).map(function (l) { return '<li class="' + (l[1] || "") + '">' + (l[1] ? "↩ " : "✓ ") + l[0] + "</li>"; }).join("") + "</ol>";
+        cap = step === 4 ? t("退回后补充重新提交，从退回的那一步继续，不用从头再走。", "After a return, the resubmission picks up at that step instead of starting over.") : t("五道审批，每一步都有负责人，每一次通过和退回都留痕。", "Five approvals, each with an owner, and every pass or return on record.");
+      }
+      pcSig = sig;
+      pcStage.innerHTML = html;
+      pcCap.innerHTML = cap;
+    };
+    var pcGo = function (j) {
+      pcI = j; pcT = pcReduce ? pcA[j].dur : 0; pcSig = "";
+      [].forEach.call(pcTabs.children, function (b, n) { b.classList.toggle("on", n === j); b.setAttribute("aria-pressed", String(n === j)); b.lastChild.style.width = n === j && pcReduce ? "100%" : "0"; });
+      pcFrame();
+    };
+    var pcTick = function (ts) {
+      var dt = pcLast == null ? 0 : Math.min(ts - pcLast, 100);
+      pcLast = ts;
+      if (pcSeen && !pcReduce && !document.hidden) {
+        var dur = pcA[pcI].dur;
+        pcT = pcHover ? Math.min(pcT + dt, dur) : pcT + dt;
+        if (pcT >= dur && !pcHover) pcGo((pcI + 1) % pcA.length);
+        else { pcFrame(); pcTabs.children[pcI].lastChild.style.width = (Math.min(pcT / dur, 1) * 100).toFixed(1) + "%"; }
+      }
+      requestAnimationFrame(pcTick);
+    };
+    [].forEach.call(pcTabs.children, function (b, j) { b.addEventListener("click", function () { pcGo(j); }); });
+    pcDemo.addEventListener("mouseenter", function () { pcHover = true; });
+    pcDemo.addEventListener("mouseleave", function () { pcHover = false; });
+    document.querySelectorAll(".lang button").forEach(function (b) { b.addEventListener("click", function () { pcSig = ""; pcFrame(); }); });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { pcSeen = e.isIntersecting; }); }, { threshold: 0.35 }).observe(pcDemo);
+    } else { pcSeen = true; }
+    pcGo(0);
+    requestAnimationFrame(pcTick);
   }
-  products.forEach(function (p, k) {
-    var b = document.createElement("button"); b.type = "button"; b.className = "prod";
-    b.innerHTML = '<b>' + p.n + '<small>' + p.pct + '%</small></b><span class="pbar"><i class="' + (p.pct === 100 ? "full" : "") + '" style="width:' + p.pct + '%"></i></span>';
-    b.addEventListener("click", function () { showProduct(k); });
-    prodGrid.appendChild(b);
-  });
-  showProduct(2);
-
-  var roles = [
-    { n: t("商务", "Sales"), see: "mine", perm: ["y", "y", "y", "n"], tag: t("本人负责", "Mine") },
-    { n: t("运营", "Ops"), see: "mine", perm: ["y", "y", "y", "n"], tag: t("本人负责", "Mine") },
-    { n: t("产品", "Product"), see: "all", perm: ["y", "p", "n", "n"], tag: t("仅支付方式可改", "Payment methods only") },
-    { n: t("负责人", "Lead"), see: "all", perm: ["y", "n", "n", "y"], tag: t("可分配负责人", "Can assign") }
-  ];
-  var channels = [["Corridor A", 1], ["Corridor B", 1], ["Corridor C", 0], ["Corridor D", 0], ["Corridor E", 0]];
-  var permNames = [t("查看", "View"), t("编辑", "Edit"), t("提交", "Submit"), t("分配", "Assign")];
-  var rolesSw = document.getElementById("roles-sw"), chList = document.getElementById("ch-list"), permEl = document.getElementById("perm");
-  function showRole(k) {
-    var r = roles[k];
-    rolesSw.querySelectorAll("button").forEach(function (b, i) { b.setAttribute("aria-pressed", String(i === k)); });
-    chList.innerHTML = channels.map(function (c) {
-      var locked = r.see === "mine" && !c[1];
-      var mine = r.see === "mine" && c[1];
-      return '<li class="' + (locked ? "locked" : (mine ? "mine" : "")) + '"><b>' + (locked ? "Corridor ·····" : c[0]) + '</b><span>' + (locked ? t("未分配给你，不可见", "Not assigned, hidden") : r.tag) + '</span></li>';
-    }).join("");
-    permEl.innerHTML = r.perm.map(function (v, i) { return '<div class="' + v + '"><b>' + (v === "y" ? "✓" : v === "p" ? "◐" : "–") + '</b>' + permNames[i] + '</div>'; }).join("");
-  }
-  roles.forEach(function (r, k) {
-    var b = document.createElement("button"); b.type = "button"; b.innerHTML = r.n;
-    b.addEventListener("click", function () { showRole(k); });
-    rolesSw.appendChild(b);
-  });
-  showRole(0);
-
-  var nodes = [
-    [t("合规", "Compliance"), t("合规团队审核", "Compliance team")],
-    [t("法务", "Legal"), t("法务团队审核", "Legal team")],
-    [t("报价", "Pricing"), t("负责人审批", "Lead approves")],
-    [t("资金", "Fund"), t("资金团队审核", "Fund team")],
-    [t("上线", "Launch"), t("负责人最终审批", "Lead signs off")]
-  ];
-  var flowEl = document.getElementById("flow"), flowNote = document.getElementById("flow-note");
-  var fGo = document.getElementById("f-go"), fBack = document.getElementById("f-back");
-  var at = 2, returned = false;
-  function renderFlow() {
-    flowEl.innerHTML = nodes.map(function (n, i) {
-      var cls = "", tag = t("待提交", "Not yet");
-      if (at >= nodes.length || i < at) { cls = "done"; tag = t("已通过", "Approved"); }
-      else if (i === at) { cls = returned ? "back" : "here"; tag = returned ? t("退回修改", "Changes requested") : t("审批中", "In review"); }
-      return '<li class="' + cls + '"><span class="dot">' + (cls === "done" ? "✓" : i + 1) + '</span><span>' + n[0] + '<span class="who">' + n[1] + '</span></span><span class="tag">' + tag + '</span></li>';
-    }).join("");
-    if (at >= nodes.length) {
-      flowNote.innerHTML = t("🔒 已上线，业务字段冻结；之后只有负责人能调整渠道负责人。", "🔒 Live. Business fields are frozen; only the lead can reassign owners now.");
-      fGo.innerHTML = t("重新演示", "Replay"); fBack.hidden = true;
-    } else if (returned) {
-      flowNote.innerHTML = t("已退回给商务 / 运营，改完重新提交，回到这个节点继续审批。", "Sent back to Sales / Ops. After their edits it is resubmitted to this step.");
-      fGo.innerHTML = t("修改后重新提交", "Resubmit"); fBack.hidden = true;
-    } else {
-      flowNote.innerHTML = at === 4 ? t("上线被退回时，要回到资金审核重新提交。", "If launch is sent back, it returns to fund review first.") : t("每一次通过、退回和重新提交都留有记录。", "Every approval, return and resubmission is recorded.");
-      fGo.innerHTML = t("通过", "Approve"); fBack.hidden = false;
-    }
-  }
-  fGo.addEventListener("click", function () {
-    if (at >= nodes.length) { at = 0; returned = false; }
-    else if (returned) { returned = false; }
-    else { at++; }
-    renderFlow();
-  });
-  fBack.addEventListener("click", function () {
-    if (at === 4) at = 3;
-    returned = true; renderFlow();
-  });
-  renderFlow();
 
   // Memory demo: five short chats, each showing one ability; layers light up underneath
     var memDemo = document.getElementById("mem-demo");
