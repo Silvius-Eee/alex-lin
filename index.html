@@ -609,6 +609,18 @@ html[data-lang="en"] .cover b { font-family: var(--f-lat); font-weight: 600; let
 .vs.big { font-weight: 600; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.03em; color: var(--gold-2); }
 .vs.big svg { width: 15px; height: 15px; fill: var(--gold); stroke: none; }
 .ct .covers { margin-block: 30px auto; }
+/* Content card: how every episode is made */
+.ct-flow { margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--line); }
+.ct-flow-lab { margin: 0; font-size: 12.5px; color: var(--muted); }
+.ct-steps { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 4px; }
+.ct-steps li { display: flex; align-items: center; font-size: 13px; color: var(--ink-2); }
+.ct-steps li > span { padding: 6px 9px; border-radius: 9px; border: 1px solid var(--line-2); background: rgba(255,255,255,.03); white-space: nowrap; }
+.ct-steps li:not(:last-child)::after { content: "→"; margin-left: 4px; color: var(--muted); }
+.ct-steps li.hot > span { color: var(--gold-2); border-color: rgba(232,180,108,.45); background: rgba(232,180,108,.09); }
+.ct-why { margin: 14px 0 0; font-size: 13.5px; line-height: 1.75; color: var(--ink-2); }
+.ct-why b { color: var(--ink); font-weight: 600; }
+.ct-loop { margin: 8px 0 0; display: flex; gap: 8px; align-items: baseline; font-size: 13px; line-height: 1.7; color: var(--muted); }
+.ct-loop i { font-style: normal; color: var(--gold-2); }
 .ct-foot { margin: 20px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-2); }
 
 footer { margin-top: clamp(88px, 12vw, 150px); border-top: 1px solid var(--line); }
@@ -1167,6 +1179,18 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
           <div class="cover c1"><span class="kind"><span lang="zh">博弈论</span><span lang="en">Game theory</span></span><b><span lang="zh">猎鹿博弈</span><span lang="en">Stag Hunt</span></b><span class="vstats"><span class="vs big" aria-label="views"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><span lang="zh">40w</span><span lang="en">400K</span></span><span class="vs" aria-label="likes"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span lang="zh">1.9w</span><span lang="en">19K</span></span></span></div>
           <div class="cover c2"><span class="kind"><span lang="zh">社会心理学</span><span lang="en">Social psych</span></span><b><span lang="zh">喜欢差距</span><span lang="en">Liking Gap</span></b><span class="vstats"><span class="vs big" aria-label="views"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><span lang="zh">13w</span><span lang="en">130K</span></span><span class="vs" aria-label="likes"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span>4.2k</span></span></span></div>
           <div class="cover c3"><span class="kind"><span lang="zh">人际吸引</span><span lang="en">Attraction</span></span><b><span lang="zh">独特吸引</span><span lang="en">Unique Attraction</span></b><span class="vstats"><span class="vs big" aria-label="views"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg><span lang="zh">10w</span><span lang="en">100K</span></span><span class="vs" aria-label="likes"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span>4.1k</span></span></span></div>
+        </div>
+        <div class="ct-flow">
+          <p class="ct-flow-lab"><span lang="zh">每一期都这样做出来</span><span lang="en">Every episode is made the same way</span></p>
+          <ol class="ct-steps">
+            <li><span><span lang="zh">选题卡</span><span lang="en">Topic card</span></span></li>
+            <li><span><span lang="zh">文案与分镜</span><span lang="en">Script and storyboard</span></span></li>
+            <li class="hot"><span><span lang="zh">15 秒开头试片</span><span lang="en">15-second opening test</span></span></li>
+            <li><span><span lang="zh">完整版</span><span lang="en">Full cut</span></span></li>
+            <li><span><span lang="zh">发布复盘</span><span lang="en">Post-release review</span></span></li>
+          </ol>
+          <p class="ct-why"><b><span lang="zh">为什么先做 15 秒试片？</span><span lang="en">Why test the first 15 seconds first?</span></b> <span lang="zh">复盘发现，大多数人只看前 10 秒左右，开头决定了一条视频能被推给多少人。所以先把开头做对，再做全片。</span><span lang="en">Reviews showed most viewers watch only about the first 10 seconds, and the opening decides how widely a video gets shown. So the opening comes first, and the full video only once it works.</span></p>
+          <p class="ct-loop"><i aria-hidden="true">↻</i><span><span lang="zh">每期复盘的发现，验证两三期后写回规范，下一期的起点就更高。</span><span lang="en">What each review finds is tested over two or three more episodes, then written back into the playbook, so the next episode starts higher.</span></span></p>
         </div>
         <p class="ct-foot"><span lang="zh">20+ 条已发布视频 · 40+ 篇心理学公众号文章</span><span lang="en">20+ published videos · 40+ psychology articles on WeChat</span></p>
       </article>
