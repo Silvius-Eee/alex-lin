@@ -900,6 +900,14 @@ html[data-lang="en"] .lane-name { font-family: var(--f-lat); font-size: 12.5px; 
 .lane .nd-lab.to-l { margin-left: 0; margin-right: -5px; text-align: right; }
 .lane .nd-lab.row2 { top: 66px; }
 .nd-lab b { font-weight: 500; color: var(--ink); }
+.lane .nd-lab.has-go { pointer-events: auto; cursor: pointer; }
+.lane .nd-lab.has-go:hover b { color: var(--gold-2); }
+.go-ar { margin-left: 4px; font-style: normal; font-size: 11px; color: var(--gold); }
+.v-go, .xp-go { display: inline-block; margin-top: 8px; font-size: 12.5px; color: var(--gold-2); text-decoration: none; border-bottom: 1px solid rgba(232,180,108,.35); }
+.v-go { display: none; }
+.v-lane li.open .v-go { display: inline-block; }
+.v-go:hover, .xp-go:hover { color: var(--gold); border-color: var(--gold); }
+#w-pay, #w-mem, #w-mp, #w-ct { scroll-margin-top: 84px; }
 .nd-lab small { display: block; margin-top: 1px; font-size: 11.5px; color: var(--gold-2); }
 .lane-gold .nd-lab b { color: var(--gold-2); }
 .lt.play .nd-lab { animation: labIn .6s ease-out backwards; animation-delay: calc(var(--d) + .35s); }
@@ -1102,7 +1110,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
       <h2><span lang="zh">不只是用 AI，<br><span class="soft">而是把它接进真实业务。</span></span><span lang="en">Not just using AI.<br><span class="soft">Wiring it into real work.</span></span></h2>
     </div>
 
-    <article class="feature">
+    <article class="feature" id="w-pay">
       <div class="f-text">
         <div class="f-kicker"><span class="st rebuild"><i></i><span lang="zh">作品集重建 · 数据虚构</span><span lang="en">Portfolio rebuild · fictional data</span></span><span class="cat"><span lang="zh">产品原型</span><span lang="en">Product prototype</span></span></div>
         <h3><span lang="zh">跨境支付渠道管理系统</span><span lang="en">Cross-border payment channel management</span></h3>
@@ -1114,7 +1122,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
         </ul>
         <ul class="pc-notes">
           <li><b><span lang="zh">我负责</span><span lang="en">My part</span></b><span><span lang="zh">需求分析、方案设计和交付</span><span lang="en">Requirements, solution design and delivery</span></span></li>
-          <li><b>AI</b><span><span lang="zh">设计 FI Agent，查费率、算报价利润</span><span lang="en">Designed an FI Agent that looks up fees and works out quote margins</span></span></li>
+          <li><b>AI</b><span><span lang="zh">原型用 AI 完成；设计 FI Agent，查费率、算报价利润</span><span lang="en">Prototypes built with AI; designed an FI Agent that looks up fees and works out quote margins</span></span></li>
         </ul>
         <p class="pc-links"><a class="mem-link" href="https://silvius-eee.github.io/payment-channel-prototype/" target="_blank" rel="noopener"><span lang="zh">打开原型 ↗</span><span lang="en">Open the prototype ↗</span></a><a class="mem-link" href="https://github.com/Silvius-Eee/payment-channel-prototype" target="_blank" rel="noopener">GitHub ↗</a></p>
       </div>
@@ -1128,7 +1136,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
       </div>
     </article>
 
-    <article class="feature mem">
+    <article class="feature mem" id="w-mem">
       <div class="f-text">
         <div class="f-kicker"><span class="st live"><i></i><span lang="zh">开源 · 每天在用</span><span lang="en">Open source · in daily use</span></span><span class="cat"><span lang="zh">Agent 系统</span><span lang="en">Agent system</span></span></div>
         <h3><span lang="zh">有长期记忆的个人助手</span><span lang="en">A personal assistant with long-term memory</span></h3>
@@ -1137,6 +1145,11 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
           <li><b>5<small><span lang="zh">层</span><span lang="en">layers</span></small></b><span><span lang="zh">记忆</span><span lang="en">of memory</span></span></li>
           <li><b>49<small><span lang="zh">个</span><span lang="en">tests</span></small></b><span><span lang="zh">结构测试</span><span lang="en">on the structure</span></span></li>
           <li><b>5<small><span lang="zh">版</span><span lang="en">versions</span></small></b><span><span lang="zh">提示词迭代</span><span lang="en">of the prompt</span></span></li>
+        </ul>
+        <ul class="pc-notes">
+          <li><b><span lang="zh">我负责</span><span lang="en">My part</span></b><span><span lang="zh">分层结构、读写规则和同步流程</span><span lang="en">The layers, the read and write rules, and the sync flow</span></span></li>
+          <li><b>AI</b><span><span lang="zh">Claude Code 和 Codex 按同一套规则读写</span><span lang="en">Claude Code and Codex read and write by the same rules</span></span></li>
+          <li><b><span lang="zh">演变</span><span lang="en">Evolved</span></b><span><span lang="zh">从一段角色提示词，拆成分层文件，再补上校验和测试</span><span lang="en">From one role prompt, to layered files, to checks and tests</span></span></li>
         </ul>
         <p class="mem-repo"><a class="mem-link" href="https://github.com/Silvius-Eee/yisu-memory" target="_blank" rel="noopener"><span lang="zh">开源仓库 · GitHub ↗</span><span lang="en">Open-source repo · GitHub ↗</span></a></p>
       </div>
@@ -1152,7 +1165,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
     </article>
 
     <div class="duo">
-      <article class="card mp">
+      <article class="card mp" id="w-mp">
         <div class="f-kicker"><span class="st live"><i></i><span lang="zh">已上线 · 微信可搜</span><span lang="en">Live · searchable in WeChat</span></span><span class="cat"><span lang="zh">AI 独立开发</span><span lang="en">AI indie build</span></span></div>
         <h3><span lang="zh">线下牌局计分小程序</span><span lang="en">Score keeper for live card games</span></h3>
         <p class="one"><span lang="zh">线下发牌，线上记分。几台手机同步座位、行动和筹码，边池、全下、平分都算得清，口袋里不用再揣一盒筹码。</span><span lang="en">Cards stay on the table, scores go on the phones. Several phones stay in sync on seats, turns and chips. Side pots, all-ins and split pots all add up, and nobody has to carry a box of chips.</span></p>
@@ -1173,7 +1186,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
         </div>
       </article>
 
-      <article class="card ct">
+      <article class="card ct" id="w-ct">
         <div class="f-kicker"><span class="st done"><i></i><span lang="zh">已发布 20+ 条</span><span lang="en">20+ published</span></span><span class="cat"><span lang="zh">内容创作</span><span lang="en">Content</span></span></div>
         <h3><span lang="zh">心理学与经济学科普</span><span lang="en">Psychology &amp; economics explainers</span></h3>
         <p class="one"><span lang="zh">用博弈论和心理学解释关系里的小事。从选题、核对资料到用 Remotion 写代码做动画，都和 AI 一起完成。</span><span lang="en">Game theory and psychology for the small moments in relationships. From picking topics and checking sources to animating in code with Remotion, made together with AI.</span></p>
@@ -1218,8 +1231,9 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
         <div class="when">2026.03 – 2026.08</div>
         <div>
           <div class="org"><b><span lang="zh">杭州自旋科技</span><span lang="en">Hangzhou Zixuan Technology</span></b><span><span lang="zh">支付产品实习</span><span lang="en">Payments product intern</span></span><small><span lang="zh">跨境支付 · 渠道管理系统</span><span lang="en">Cross-border payments · channel management</span></small></div>
-          <p class="did"><span lang="zh">从 0 到 1 参与建设跨境支付渠道管理系统，负责 Payin、Payout、发卡、全球账户四条产品线的需求分析、方案设计与交付，围绕数据录入、数据隔离和权限审批搭起整条上线链路，并整理完整的交接文档。</span><span lang="en">Helped build a cross-border payment channel system from zero, owning analysis, design and delivery for Payin, Payout, Issuing Cards and Global Account. Built the launch path around data entry, isolation and approval, and wrote the full handover set.</span></p>
+          <p class="did"><span lang="zh">从 0 到 1 参与建设跨境支付渠道管理系统，负责 Payin、Payout、发卡、全球账户四条产品线的需求分析、方案设计与交付，围绕数据录入、数据隔离和权限审批搭起整条上线链路，并整理完整的交接文档。产品原型用 AI 完成，并设计 FI Agent，用模型 API 做了渠道能力与费率查询的原型验证。</span><span lang="en">Helped build a cross-border payment channel system from zero, owning analysis, design and delivery for Payin, Payout, Issuing Cards and Global Account. Built the launch path around data entry, isolation and approval, and wrote the full handover set. Built the prototypes with AI, and designed an FI Agent for channel capability and fee lookup, validated as a prototype on a model API.</span></p>
           <p class="lesson"><b><span lang="zh">复盘</span><span lang="en">REVIEW</span></b><span><span lang="zh">先分清做到了哪一步，再谈做得好不好。</span><span lang="en">First be clear about how far it got, then judge how good it is.</span></span></p>
+          <a class="xp-go" href="#w-pay"><span lang="zh">这套系统的作品集重建，在作品区 ↑</span><span lang="en">The portfolio rebuild of this system is in Work ↑</span></a>
         </div>
       </li>
       <li>
@@ -1234,7 +1248,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
         <div class="when">2024.03 – 2025.12</div>
         <div>
           <div class="org"><b><span lang="zh">杭州非卖欧健康科技</span><span lang="en">Hangzhou Feimaiou Health Tech</span></b><span><span lang="zh">创业合伙人</span><span lang="en">Co-founding partner</span></span><small><span lang="zh">健身工作室</span><span lang="en">Fitness studio</span></small></div>
-          <p class="did"><span lang="zh">运营工作室的小红书账号，负责用户承接、社群和转化流程，和团队一起做到六位数营收。</span><span lang="en">Ran the studio's Xiaohongshu account and owned member onboarding, community and conversion, helping the team reach six-figure revenue.</span></p>
+          <p class="did"><span lang="zh">负责战略制定和项目路演；参与从 0 到 1 的获客、引流、转化、成交与复购，包括小红书、抖音和美团的引流与投流，宣发物料和宣传活动，私域跟进成交和老客复购，推动团队完成六位数营收。</span><span lang="en">Owned strategy and project pitches; took part in the whole path from zero, from acquisition and lead generation to conversion, closing and repeat purchase. That covered organic and paid traffic on Xiaohongshu, Douyin and Meituan, promo materials and campaigns, and following leads in private channels to a sale and back for repeat visits. Helped the team reach six-figure revenue.</span></p>
           <p class="lesson"><b><span lang="zh">复盘</span><span lang="en">REVIEW</span></b><span><span lang="zh">生意不靠一次成交，靠的是之后每一次承接。</span><span lang="en">Business is not one sale. It is every follow-through after it.</span></span></p>
         </div>
       </li>
@@ -1497,7 +1511,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
       nodes: [
         [15.3, "2024.4", t("心理学公众号", "Psychology column"), t("ChatGPT 写稿、DALL·E 配图", "Written with ChatGPT, illustrated with DALL·E"), { side: "l", res: t("一个半月涨粉四位数", "Four-figure followers in six weeks") }],
         [18.5, "2024.7 – 2024.12", t("AI 绘图与视频", "AI images &amp; video"), t("用 Midjourney、即梦、可灵做图和短视频", "Images and short videos with Midjourney, Jimeng and Kling")],
-        [45.3, "2026.10", t("抖音科普视频", "Douyin explainers"), t("用 Claude Code 和 Codex 做心理学与经济学科普", "Psychology and economics explainers made with Claude Code and Codex"), { side: "l", res: t("一个月涨粉四位数", "Four-figure followers in a month") }]
+        [45.3, "2026.10", t("抖音科普视频", "Douyin explainers"), t("用 Claude Code 和 Codex 做心理学与经济学科普", "Psychology and economics explainers made with Claude Code and Codex"), { side: "l", res: t("一个月涨粉四位数", "Four-figure followers in a month"), go: "w-ct" }]
       ] },
     { n: t("知识与信息管理", "Knowledge &amp; info"), c: "violet",
       seg: [[17, 36, "violet fade-r", "Gemini · NotebookLM · Coze"], [36, nowM, "violet", "Claude Code"]],
@@ -1505,7 +1519,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
         [17.5, "2024.6", t("Gemini 个人助手", "Gemini assistant"), t("第一个有记忆的个人助手；用 NotebookLM 准备组会报告", "A first assistant with memory; NotebookLM for group meeting prep"), { side: "l", origin: 1 }],
         [21.5, "2024.10", t("Obsidian 知识库", "Obsidian vault"), t("搭起以 Obsidian 为核心的知识库", "A knowledge base built around Obsidian")],
         [32.5, "2025.9", t("Coze 自动入库", "Coze auto-intake"), t("Coze + 飞书多维表格，金融信息自动入库", "Coze and Feishu Bitable file financial news automatically"), { side: "l" }],
-        [36.5, t("2026 起", "2026 on"), t("有记忆的个人助手", "Assistant with memory"), t("用 Claude Code 搭的个人助手，接手了以前 Gemini 做的事", "A personal assistant on Claude Code, taking over what Gemini used to do")]
+        [36.5, t("2026 起", "2026 on"), t("有记忆的个人助手", "Assistant with memory"), t("用 Claude Code 搭的个人助手，接手了以前 Gemini 做的事", "A personal assistant on Claude Code, taking over what Gemini used to do"), { go: "w-mem" }]
       ] },
     { n: t("产品与 Agent", "Products &amp; agents"), c: "gold",
       seg: [[22, 32, "gold-soft", "Cursor · CodeBuddy · WorkBuddy"], [32, nowM, "gold", "Claude Code · Codex", 1]],
@@ -1513,11 +1527,12 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
         [22.5, "2024.11", t("简单网页", "Simple web pages"), t("第一次用 AI 编程：用 Cursor 做简单网页", "First AI coding: simple web pages with Cursor")],
         [30.5, "2025.7", t("MCP 智能体", "MCP agents"), t("搭能调用外部工具的智能体", "Agents that call outside tools")],
         [32, "2025.9", "", t("开始用 Claude Code，把整件事交给 Agent", "Started on Claude Code, handing whole tasks to agents"), { mark: 1, origin: 2 }],
-        [38, "2026.3 – 2026.8", t("跨境支付系统", "Payment system"), t("跨境支付渠道管理系统：设计 FI Agent，支持渠道能力、费率查询和报价利润计算，接入模型 API 做了原型验证", "Cross-border payment channel system: designed the FI agent for channel capability, fee lookup and quote margins; prototyped it on a model API"), { hi: 44 }],
-        [44.5, "2026.9", t("小程序上线", "Score app"), t("线下牌局计分小程序，已上线，微信可搜", "A score keeper for live card games, live and searchable in WeChat")]
+        [38, "2026.3 – 2026.8", t("跨境支付系统", "Payment system"), t("跨境支付渠道管理系统：设计 FI Agent，支持渠道能力、费率查询和报价利润计算，接入模型 API 做了原型验证", "Cross-border payment channel system: designed the FI agent for channel capability, fee lookup and quote margins; prototyped it on a model API"), { hi: 44, go: "w-pay" }],
+        [44.5, "2026.9", t("小程序上线", "Score app"), t("线下牌局计分小程序，已上线，微信可搜", "A score keeper for live card games, live and searchable in WeChat"), { go: "w-mp" }]
       ] }
   ];
   var ltItems = [];
+  function goCard(id) { var el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); }
   lanes.forEach(function (ln, li) {
     var lane = document.createElement("div"); lane.className = "lane lane-" + ln.c;
     lane.innerHTML = '<div class="lane-name"><i class="sw ' + ln.c + '"></i><span>' + ln.n + '</span></div>';
@@ -1536,7 +1551,8 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
       }
       var pt = document.createElement("span"); pt.className = "nd" + (o.mark ? " mark" : "") + (oc ? " origin" : "");
       if (oc) pt.style.setProperty("--oc", oc);
-      pt.innerHTML = '<span class="tip"><b>' + nd[1] + '</b><em>' + nd[3] + '</em>' + (oc ? '<span class="o">' + t(eras[o.origin][3] + " 的起点", "Where " + eras[o.origin][3] + " began") + '</span>' : '') + '</span>';
+      pt.innerHTML = '<span class="tip"><b>' + nd[1] + '</b><em>' + nd[3] + '</em>' + (oc ? '<span class="o">' + t(eras[o.origin][3] + " 的起点", "Where " + eras[o.origin][3] + " began") + '</span>' : '') + (o.go ? '<span class="o">' + t("点一下看作品 ↑", "Click to see the work ↑") + '</span>' : '') + '</span>';
+      if (o.go) { pt.classList.add("has-go"); pt.addEventListener("click", function () { goCard(o.go); }); pt.addEventListener("keydown", function (e) { if (e.key === "Enter") goCard(o.go); }); }
       pt.style.left = pct(nd[0]); pt.tabIndex = 0; pt.dataset.m = nd[0];
       if (nd[0] < 6) pt.classList.add("tip-l"); else if (nd[0] > 41) pt.classList.add("tip-r");
       lane.appendChild(pt);
@@ -1544,7 +1560,8 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
       if (!o.mark) {
         var lab = document.createElement("span"); lab.className = "nd-lab" + (o.side === "l" ? " to-l" : "");
         if (o.side === "l") lab.style.right = (100 - nd[0] / SPAN * 100) + "%"; else lab.style.left = pct(nd[0]);
-        lab.innerHTML = '<b>' + nd[2] + '</b>' + (o.res ? '<small>' + o.res + '</small>' : '');
+        lab.innerHTML = '<b>' + nd[2] + (o.go ? '<i class="go-ar">↑</i>' : '') + '</b>' + (o.res ? '<small>' + o.res + '</small>' : '');
+        if (o.go) { lab.classList.add("has-go"); lab.addEventListener("click", function () { goCard(o.go); }); }
         lane.appendChild(lab); els.push(lab);
       }
       // Dashed guide from the era header down to the point where that era began
@@ -1567,7 +1584,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
       ln.seg.map(function (s) { return '<span class="seg-tag">' + s[3] + '</span>'; }).join("<span>→</span>") + '</div><ol>' +
       ln.nodes.filter(function (nd) { return !(nd[4] && nd[4].mark); }).map(function (nd) {
         var o = nd[4] || {};
-        return '<li><i class="sw ' + ln.c + '"></i><span class="v-date">' + nd[1] + '</span><div><b>' + nd[2] + '</b>' + (o.res ? '<em>' + o.res + '</em>' : '') + '<span class="v-d">' + nd[3] + '</span></div></li>';
+        return '<li><i class="sw ' + ln.c + '"></i><span class="v-date">' + nd[1] + '</span><div><b>' + nd[2] + '</b>' + (o.res ? '<em>' + o.res + '</em>' : '') + '<span class="v-d">' + nd[3] + '</span>' + (o.go ? '<a class="v-go" href="#' + o.go + '">' + t("看作品 ↑", "See the work ↑") + '</a>' : '') + '</div></li>';
       }).join("") + '</ol></div>';
   });
   vh = vh.replace('<div class="v-lane', '<p class="v-tap">' + t("点开每一项看具体怎么做", "Tap an item for details") + '</p><div class="v-lane');
@@ -1575,7 +1592,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
   ltV.querySelectorAll(".v-lane li").forEach(function (li) {
     li.tabIndex = 0; li.setAttribute("role", "button"); li.setAttribute("aria-expanded", "false");
     function toggle() { var o = li.classList.toggle("open"); li.setAttribute("aria-expanded", String(o)); }
-    li.addEventListener("click", toggle);
+    li.addEventListener("click", function (e) { if (!e.target.closest(".v-go")) toggle(); });
     li.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
   });
 
