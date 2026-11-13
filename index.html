@@ -7,6 +7,7 @@
 <meta name="theme-color" content="#0a0b0f">
 <style>html{color-scheme:dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>林展迪 · Alex Lin</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0b0f'/%3E%3Ctext x='28' y='45' text-anchor='middle' font-family='Helvetica,Arial,sans-serif' font-size='38' font-weight='700' fill='%23f3efe7'%3EA%3C/text%3E%3Ccircle cx='49' cy='42' r='4.5' fill='%23e8b46c'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&text=%E3%80%8A%E4%BA%BA%E6%B0%91%E6%97%A5%E6%8A%A5%E3%80%8B%E5%B8%A5%E6%A3%8B%E5%8A%A8%E9%9D%99%E8%A1%8C%E7%94%9C&display=swap">
@@ -164,7 +165,8 @@ html[data-lang="en"] .rot-text.motto { font-family: var(--f-serif); font-style: 
 .win-bar { display: flex; align-items: center; gap: 8px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
 .win-bar i { width: 11px; height: 11px; border-radius: 50%; background: rgba(255,255,255,.14); }
 .win-bar span { margin-left: 10px; font: 12px var(--f-mono); color: var(--muted); }
-.win-bar .tag { margin-left: auto; font: 11px var(--f-mono); color: var(--gold-2); padding: 3px 9px; border-radius: 6px; background: rgba(232,180,108,.12); }
+.win-bar > span:not(.tag) { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.win-bar .tag { margin-left: auto; flex-shrink: 0; white-space: nowrap; font: 11px var(--f-mono); color: var(--gold-2); padding: 3px 9px; border-radius: 6px; background: rgba(232,180,108,.12); }
 @keyframes blink { 50% { opacity: 0; } }
 .win-bar .tag.live { display: inline-flex; align-items: center; gap: 6px; color: var(--ok); background: rgba(127,209,168,.1); }
 .win-bar .tag.live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ok); animation: pulse 2.4s ease-in-out infinite; }
@@ -835,7 +837,7 @@ html[data-lang="en"] .wf-node b { font-family: var(--f-lat); }
 .lt.play .nd.pulse::after { animation: rippleAgain 1.2s ease-out; animation-delay: 0s; }
 .lt.play .nd.pulse .flash { animation: skillPop 2.2s ease-out; animation-delay: 0s; }
 .lt.play .nd.pulse { animation: hop .7s cubic-bezier(.3,1.6,.5,1); box-shadow: 0 0 0 5px rgba(232,180,108,.24), 0 0 24px rgba(255,236,200,1); }
-@keyframes hop { 0% { transform: translate(-50%, -50%); } 35% { transform: translate(-50%, -190%) scale(1.15); } 65% { transform: translate(-50%, -40%) scale(1.2, .85); } 100% { transform: translate(-50%, -50%); } }
+@keyframes hop { 0% { transform: translate(-50%, -50%); } 35% { transform: translate(-50%, -80%) scale(1.15); } 65% { transform: translate(-50%, -40%) scale(1.2, .85); } 100% { transform: translate(-50%, -50%); } }
 .lt-scan { position: absolute; top: 96px; bottom: 26px; left: 0; width: 120px; margin-left: -120px; pointer-events: none; opacity: 0;
   background: linear-gradient(90deg, transparent, rgba(232,180,108,.06) 60%, rgba(232,180,108,.16)); border-right: 1px solid rgba(246,217,168,.55); box-shadow: 8px 0 24px -8px rgba(232,180,108,.5); }
 .lt-scan.go { animation: scan 9s linear; }
@@ -879,7 +881,7 @@ html[data-lang="en"] .lane-name { font-family: var(--f-lat); font-size: 12.5px; 
 .sw.rose { background: #e08aa0; }
 .sw.silver { background: rgba(200,206,220,.95); }
 .sw.gold { background: var(--gold); box-shadow: 0 0 8px var(--gold-glow); }
-.seg-tag { position: absolute; top: 5px; padding: 2px 8px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; background: rgba(255,255,255,.035); font: 500 11px/1.4 var(--f-lat); color: var(--ink-2); white-space: nowrap; }
+.seg-tag { position: absolute; top: 1px; padding: 2px 8px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; background: rgba(255,255,255,.035); font: 500 11px/1.4 var(--f-lat); color: var(--ink-2); white-space: nowrap; }
 .seg-tag span[lang="zh"] { font-family: var(--f-cn); }
 .seg-tag.to-end { margin-right: 6px; }
 .lane-gold .seg-tag { border-color: rgba(232,180,108,.4); background: rgba(232,180,108,.07); }
