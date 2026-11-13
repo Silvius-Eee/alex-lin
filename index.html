@@ -398,9 +398,16 @@ html[data-lang="en"] .facts li { grid-template-columns: 82px minmax(0, 1fr); }
 .pc-log li { animation: memIn .25s both; }
 .pc-log li.back { color: #f2b7a3; }
 @media (max-width: 560px) {
-  .pc-stage { padding: 12px; min-height: 0; }
+  .pc-stage { padding: 12px; min-height: 250px; }
   .pc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pc-cell { height: 42px; margin-bottom: 5px; }
+  .pc-one { column-gap: 6px; }
+  .pc-lines { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; margin-bottom: 8px; }
+  .pc-line { padding: 4px 2px; border-radius: 8px; border: 1px solid var(--line); text-align: center; font: 500 11px/1.5 var(--f-lat); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color .2s, border-color .2s, background .2s; }
+  .pc-line span[lang="zh"] { font-family: var(--f-cn); }
+  .pc-line.ok { color: var(--ok); }
+  .pc-line.bad { color: #f0c36a; border-color: rgba(240,195,106,.45); }
+  .pc-line.on { border-color: rgba(232,180,108,.6); background: rgba(232,180,108,.08); }
   .pc-mx td, .pc-mx th { padding: 10px 4px; white-space: nowrap; }
   .pc-mx th { padding-top: 0; font-size: 10.5px; }
   .pc-mx td { font-size: 11px; }
@@ -1666,7 +1673,24 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
     pcTabs.innerHTML = pcA.map(function (a, j) { return '<button type="button" class="mem-tab"><small>0' + (j + 1) + "</small>" + t(a.k[0], a.k[1]) + "<i></i></button>"; }).join("");
     var pcReduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var pcI = 0, pcT = 0, pcLast = null, pcHover = false, pcSeen = false, pcSig = "";
-    var pcGrid = function (cls) {
+    var pcNarrow = window.matchMedia("(max-width: 560px)");
+    var pcShort = ["Payin", "Payout", t("发卡", "Issuing"), t("全球账户", "Global")];
+    // Phones: a strip of the four lines with their status, and only the active line's fields below
+    var pcOne = function (cls, col) {
+      var strip = '<div class="pc-lines">' + pcShort.map(function (nm, c) {
+        var st = [0, 1, 2, 3].map(function (r) { return cls(c * 4 + r); });
+        var miss = st.filter(function (x) { return x.indexOf("miss") > -1; }).length;
+        var full = st.every(function (x) { return x.indexOf("fill") > -1; });
+        return '<span class="pc-line' + (c === col ? " on" : "") + (miss ? " bad" : full ? " ok" : "") + '">' + nm + (miss ? " · " + t("缺 ", "") + miss + t("", " missing") : full ? " ✓" : "") + "</span>";
+      }).join("") + "</div>";
+      return strip + '<div class="pc-grid pc-one">' + pcP[col][1].map(function (f, r) {
+        var state = cls(col * 4 + r);
+        var val = state.indexOf("fill") > -1 ? "<em>" + t(f[2], f[3]) + "</em>" : state.indexOf("miss") > -1 ? "<em>" + t("待补充", "Missing") + "</em>" : "";
+        return '<div class="pc-cell ' + state + '"><small>' + t(f[0], f[1]) + "</small>" + val + "</div>";
+      }).join("") + "</div>";
+    };
+    var pcGrid = function (cls, col) {
+      if (pcNarrow.matches) return pcOne(cls, col);
       return '<div class="pc-grid">' + pcP.map(function (p, c) {
         return '<div class="pc-col"><span>' + p[0] + "</span>" + p[1].map(function (f, r) {
           var state = cls(c * 4 + r);
@@ -1680,17 +1704,18 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
       if (pcI === 0) {
         var filled = Math.max(0, Math.min(13, Math.floor((ms - 80) / 70) + 1));
         var fixed = ms >= 2100, flag = ms >= 1300 && !fixed;
-        sig = "e" + filled + flag + fixed;
+        sig = "e" + filled + flag + fixed + pcNarrow.matches;
         if (sig === pcSig) return;
         var order = [];
         for (var n = 0; n < 16; n++) if (pcMiss.indexOf(n) < 0) order.push(n);
         var done = order.slice(0, filled);
+        var col = fixed || flag ? 3 : done.length ? Math.floor(done[done.length - 1] / 4) : 0;
         html = '<div class="pc-who"><span>' + t("渠道 A · 四条产品线", "Channel A · four product lines") + "</span></div>" +
           pcGrid(function (k) {
             if (fixed) return pcMiss.indexOf(k) > -1 ? "fill new" : "fill";
             if (done.indexOf(k) > -1) return k === done[done.length - 1] ? "fill new" : "fill";
             return flag && pcMiss.indexOf(k) > -1 ? "miss new" : "";
-          }) +
+          }, col) +
           '<div class="pc-bar"><span>' + (fixed ? t("字段齐全", "All fields complete") : flag ? t("还有 3 个字段待补充", "3 fields still missing") : t("录入中…", "Filling in…")) + '</span><b class="' + (fixed ? "ok" : "") + '">' + t("提交审批", "Submit") + "</b></div>";
         cap = fixed ? t("补齐之后，才能提交审批。", "Only a complete channel can go to approval.") : t("四条产品线，每条有自己的字段；缺一个都不能提交。", "Four product lines, each with its own fields. One gap blocks submission.");
       } else if (pcI === 1) {
@@ -1893,7 +1918,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
   };
   // Node positions are fixed per layout; connectors are measured from the rendered cards so every arrow is straight with equal gaps
   var LAYOUTS = {
-    wide: { w: 1000, h: 540, pos: { input: [95, 200], memory: [320, 200], agent: [565, 200], output: [845, 200], review: [845, 425], skill: [565, 425] },
+    wide: { w: 1000, h: 460, pos: { input: [95, 125], memory: [320, 125], agent: [565, 125], output: [845, 125], review: [845, 350], skill: [565, 350] },
       edges: [
         { a: "input", as: "r", b: "memory", bs: "l", lab: t("先让 AI 看见", "Let AI see") },
         { a: "memory", as: "r", b: "agent", bs: "l", lab: t("先有事实", "Facts first") },
