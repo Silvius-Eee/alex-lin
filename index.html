@@ -438,13 +438,13 @@ html[data-lang="en"] .mem-tab { font-family: var(--f-lat); font-size: 12px; }
 .mem-log b { color: var(--ok); font-weight: 400; margin-right: 8px; }
 .mem-log .k { display: inline-block; min-width: 5.5em; color: var(--muted); }
 html[data-lang="en"] .mem-log .k { min-width: 7.5em; }
-.mem-layers { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
+.mem-layers { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
 .mem-layer { font-size: 11.5px; text-align: center; padding: 7px 2px; border-radius: 9px; border: 1px solid var(--line); color: var(--muted); transition: color .25s, border-color .25s, background .25s; }
 .mem-layer.on { color: var(--gold-2); border-color: rgba(232,180,108,.45); background: rgba(232,180,108,.1); }
 .mem-cap { margin: 10px 0 0; min-height: 1.6em; font-size: 13px; line-height: 1.6; color: var(--ink-2); }
 @keyframes memIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @keyframes memDot { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
-@media (max-width: 560px) { .mem-layers { grid-template-columns: repeat(3, minmax(0, 1fr)); } .mem-chat { height: 312px; padding: 14px; } .mem-tab { font-size: 12px; padding: 6px 2px 8px; } .mem-b { max-width: 92%; } }
+@media (max-width: 560px) { .mem-chat { height: 312px; padding: 14px; } .mem-tab { font-size: 12px; padding: 6px 2px 8px; } .mem-b { max-width: 92%; } }
 @media (prefers-reduced-motion: reduce) { .mem-b, .mem-sys, .mem-typing, .mem-log div { animation: none; } }
 
 /* Off the board */
@@ -1735,30 +1735,30 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
     var memDemo = document.getElementById("mem-demo");
     if (memDemo) {
       var memChat = document.getElementById("mem-chat"), memTabs = document.getElementById("mem-tabs"), memLayers = document.getElementById("mem-layers"), memCap = document.getElementById("mem-cap");
-      var memL = [["速记", "Daily note"], ["当前状态", "Now"], ["本周", "This week"], ["已结周", "Past weeks"], ["已失效", "Retired"], ["原始对话", "Transcripts"]];
+      var memL = [["规则", "Rules"], ["当前", "Current"], ["历史", "History"], ["底账", "Ledger"], ["版本", "Versions"]];
       // step: [ms, kind, zh, en, layers]
       var memS = [
         { k: ["记得住", "Remembers"], cap: ["新对话先读当前状态，和昨天还没同步的速记。", "A new chat reads the current state and yesterday's unsynced notes."], dur: 4200, steps: [
           [0, "sys", "新对话", "New chat"], [150, "u", "今晚有课吗？", "Do I have class tonight?"], [450, "typing"],
-          [800, "a", "有，19:30 游泳。<em>昨天你说想换泳镜</em>，买了吗？", "Yes, swimming at 19:30. <em>Yesterday you wanted new goggles</em>. Did you get them?", [0, 1]]] },
+          [800, "a", "有，19:30 游泳。<em>昨天你说想换泳镜</em>，买了吗？", "Yes, swimming at 19:30. <em>Yesterday you wanted new goggles</em>. Did you get them?", [1, 3]]] },
         { k: ["分得清", "Tells apart"], cap: ["事实和计划分开记，计划不会被记成已完成。", "Facts and plans are kept apart, so a plan is never logged as done."], dur: 4000, steps: [
           [0, "u", "调研我交了吧？", "I handed in the survey, right?"], [300, "typing"],
-          [650, "a", "还不算。周三你说的是“周五前交”，那是<em>计划</em>，之后没听你说交了。", "Not yet. On Wednesday you said “by Friday”. That's a <em>plan</em>, and I haven't heard it was done.", [2]]] },
+          [650, "a", "还不算。周三你说的是“周五前交”，那是<em>计划</em>，之后没听你说交了。", "Not yet. On Wednesday you said “by Friday”. That's a <em>plan</em>, and I haven't heard it was done.", [0, 1]]] },
         { k: ["会更新", "Updates"], cap: ["被推翻的判断不悄悄改掉，带着证据和日期留底。", "An overturned belief isn't quietly edited. It's retired with the evidence and the date."], dur: 4200, steps: [
           [0, "u", "你记得我不吃辣吧？", "You remember I don't eat spicy food, right?"], [300, "typing"],
-          [650, "a", "这条 <em>11/05 已作废</em>：那天你点了一桌川菜。旧记录还在，旁边写着为什么作废。", "That one was <em>retired on 11/05</em>, the day you ordered a whole Sichuan spread. The old note is still there, with the reason it was retired.", [4]]] },
+          [650, "a", "这条 <em>11/05 已作废</em>：那天你点了一桌川菜。旧记录还在，旁边写着为什么作废。", "That one was <em>retired on 11/05</em>, the day you ordered a whole Sichuan spread. The old note is still there, with the reason it was retired.", [2]]] },
         { k: ["有出处", "Cites"], cap: ["措辞要紧时回原始对话查原话，不拿自己的总结当证据。", "When wording matters, it checks the original words, not its own summary."], dur: 4000, steps: [
           [0, "u", "我上次怎么评价那家店？", "What did I say about that restaurant?"], [300, "typing"],
-          [650, "a", "<em>原话</em>是“味道一般，但离公司近”，出自 11/03 的对话。", "Your <em>exact words</em>: “the food's so-so, but it's close to the office”, from the 11/03 chat.", [5]]] },
+          [650, "a", "<em>原话</em>是“味道一般，但离公司近”，出自 11/03 的对话。", "Your <em>exact words</em>: “the food's so-so, but it's close to the office”, from the 11/03 chat.", [3]]] },
         { k: ["会同步", "Syncs"], cap: ["只有明确说要写才动文件；写完先校验，再提交一次。", "It writes only when asked, then checks the result and commits once."], dur: 5800, steps: [
           [0, "u", "同步一下今天。", "Sync today."], [250, "typing"],
           [550, "a", "这句先算聊天总结，<em>不改文件</em>。要写进记忆库吗？", "I'll treat that as a chat summary and <em>won't touch any files</em>. Write it to memory?"],
           [1350, "u", "写吧。", "Yes, write it."],
-          [1750, "log", "本周记录|新增 11/12", "This week|added 11/12", [2]],
+          [1750, "log", "本周记录|新增 11/12", "This week|added 11/12", [1]],
           [2000, "log", "当前状态|更新 2 条，淘汰 1 条", "Now|2 updated, 1 removed", [1]],
-          [2250, "log", "速记|收尾", "Daily note|closed", [0]],
-          [2500, "log", "结构校验|通过", "Checks|passed"],
-          [2750, "log", "提交|同步 11-12", "Commit|sync 11-12"]] }
+          [2250, "log", "速记|收尾", "Daily note|closed", [3]],
+          [2500, "log", "结构校验|通过", "Checks|passed", [0]],
+          [2750, "log", "提交|同步 11-12", "Commit|sync 11-12", [4]]] }
       ];
       var memReduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       memTabs.innerHTML = memS.map(function (sc, j) { return '<button type="button" class="mem-tab"><small>0' + (j + 1) + "</small>" + t(sc.k[0], sc.k[1]) + "<i></i></button>"; }).join("");
@@ -1857,7 +1857,7 @@ html[data-lang="en"] .v-lane h4 { font-family: var(--f-lat); font-weight: 600; }
     input: { role: t("输入", "Input"), title: t("语音 · 图片 · 链接", "Voice · images · links"), icons: IC.mic + IC.shot + IC.link,
       sub: t("微信输入法 · Typeless", "WeChat Input · Typeless"), tip: t("用语音把想法说给 AI，也会直接发图片和链接。", "I speak ideas to AI, and send images and links straight in.") },
     memory: { role: t("记忆", "Memory"), title: "Obsidian", icons: brand("obsidian", "#a88bfa"),
-      tip: t("所有背景、项目和过往记录，都存在 Obsidian 里。", "Every background note, project and past record lives in Obsidian.") },
+      tip: t("所有背景、项目和过往记录，都存在 Obsidian 里。怎么分层、什么该忘，作品里的记忆系统卡有演示。", "Every background note, project and past record lives in Obsidian. How it is layered, and what gets forgotten, is shown in the memory system card above.") },
     agent: { role: "Agent", title: "Claude Code · Codex", icons: brand("claude", "#e08a6a") + brand("openai", "#f3efe7"), hero: true,
       sub: brand("googlegemini", "#8fa8ff") + t("也会用 Google 生态", "plus the Google stack"), tip: t("用得最多的是 Claude Code 和 Codex。", "Claude Code and Codex do most of the work.") },
     output: { role: t("产出", "Output"), list: [
